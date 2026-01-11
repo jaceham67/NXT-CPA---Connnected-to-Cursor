@@ -45,8 +45,9 @@ body {
 .logo a {
     text-decoration: none;
     display: flex;
-    align-items: center;
-    gap: 0.8rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
 }
 
 .logo-bars {
@@ -54,23 +55,28 @@ body {
     flex-direction: column;
     gap: 3px;
     align-items: flex-start;
+    margin-left: 0;
+    margin-bottom: 0;
 }
 
-.bar {
+.logo-bars .bar {
     background-color: purple;
     height: 3px;
     border-radius: 2px;
+    display: block;
+    min-width: 0;
+    flex-shrink: 0;
 }
 
-.bar-1 {
+.logo-bars .bar-1 {
     width: 28px;
 }
 
-.bar-2 {
+.logo-bars .bar-2 {
     width: 22px;
 }
 
-.bar-3 {
+.logo-bars .bar-3 {
     width: 16px;
 }
 
@@ -78,6 +84,7 @@ body {
     display: flex;
     flex-direction: column;
     line-height: 1;
+    margin-top: 0;
 }
 
 .logo-top {
