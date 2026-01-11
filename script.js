@@ -1,3 +1,9 @@
+// Dark Mode Toggle - Initialize immediately to prevent flash
+(function() {
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', currentTheme);
+})();
+
 // Mobile Navigation Toggle
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
@@ -94,6 +100,33 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById(targetTab).classList.add('active');
         });
     });
+
+    // Dark Mode Toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    if (themeToggle) {
+        const themeIcon = themeToggle.querySelector('.theme-toggle-icon');
+        
+        // Get current theme (already set by initialization above)
+        const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+        
+        // Update icon based on current theme
+        if (currentTheme === 'dark') {
+            themeIcon.textContent = '☀️';
+        } else {
+            themeIcon.textContent = '🌙';
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            
+            // Update icon
+            themeIcon.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+        });
+    }
 });
 
 
