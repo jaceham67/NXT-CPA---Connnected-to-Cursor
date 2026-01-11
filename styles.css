@@ -44,12 +44,55 @@ body {
 
 .logo a {
     text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
 }
 
-.logo h1 {
+.logo-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    align-items: flex-start;
+}
+
+.bar {
+    background-color: purple;
+    height: 3px;
+    border-radius: 2px;
+}
+
+.bar-1 {
+    width: 28px;
+}
+
+.bar-2 {
+    width: 22px;
+}
+
+.bar-3 {
+    width: 16px;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+}
+
+.logo-top {
+    font-size: 1.2rem;
+    font-weight: 600;
     color: purple;
+    text-transform: lowercase;
+    letter-spacing: 0.5px;
+}
+
+.logo-bottom {
     font-size: 1.8rem;
     font-weight: 700;
+    color: purple;
+    text-transform: uppercase;
     letter-spacing: 1px;
 }
 
@@ -104,22 +147,50 @@ body {
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #2d1b4e 100%);
     color: white;
     padding: 8rem 2rem;
     text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(128, 0, 128, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(138, 43, 226, 0.2) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
 }
 
 .hero-content h2 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    font-weight: 700;
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    text-shadow: 0 2px 20px rgba(255, 255, 255, 0.1);
+    background: linear-gradient(135deg, #ffffff 0%, #e0e0ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .hero-content p {
     font-size: 1.3rem;
     margin-bottom: 2rem;
-    opacity: 0.95;
+    opacity: 0.9;
+    font-weight: 300;
+    letter-spacing: 0.5px;
 }
 
 .cta-button {
@@ -569,8 +640,24 @@ footer p {
         padding: 3rem 1rem;
     }
 
-    .logo h1 {
-        font-size: 1.5rem;
+    .logo-top {
+        font-size: 1rem;
+    }
+    
+    .logo-bottom {
+        font-size: 1.4rem;
+    }
+    
+    .bar-1 {
+        width: 24px;
+    }
+    
+    .bar-2 {
+        width: 19px;
+    }
+    
+    .bar-3 {
+        width: 14px;
     }
 }
 
