@@ -518,7 +518,7 @@ body {
 
 .salary-row {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
+    grid-template-columns: 2fr 1.5fr 1.5fr;
     gap: 1rem;
     padding: 1.2rem;
     border-bottom: 1px solid var(--border-color);
