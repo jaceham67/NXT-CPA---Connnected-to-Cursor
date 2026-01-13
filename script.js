@@ -1,9 +1,3 @@
-// Dark Mode Toggle - Initialize immediately to prevent flash
-(function() {
-    const currentTheme = localStorage.getItem('theme') || 'light';
-    document.documentElement.setAttribute('data-theme', currentTheme);
-})();
-
 // All event listeners that need DOM to be ready
 document.addEventListener('DOMContentLoaded', () => {
     // Mobile Navigation Toggle
@@ -83,37 +77,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Dark Mode Toggle
-    const themeToggle = document.getElementById('theme-toggle');
-    if (themeToggle) {
-        const themeIcon = themeToggle.querySelector('.theme-toggle-icon');
-        
-        if (themeIcon) {
-            // Get current theme (already set by initialization above)
-            const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
-            
-            // Update icon based on current theme
-            if (currentTheme === 'dark') {
-                themeIcon.textContent = '☀️';
-            } else {
-                themeIcon.textContent = '🌙';
-            }
-            
-            themeToggle.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                
-                const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
-                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-                
-                document.documentElement.setAttribute('data-theme', newTheme);
-                localStorage.setItem('theme', newTheme);
-                
-                // Update icon
-                themeIcon.textContent = newTheme === 'dark' ? '☀️' : '🌙';
-            });
-        }
-    }
 });
 
 // Add active class to navigation links on scroll (runs immediately)
