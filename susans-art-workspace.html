@@ -7,46 +7,46 @@
     <link rel="stylesheet" href="styles.css">
     <style>
         .art-workspace {
-            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 50%, #6d28d9 100%);
+            background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 50%, #f9a8d4 100%);
             min-height: 100vh;
             position: relative;
             overflow: hidden;
         }
         
         .art-workspace::before {
-            content: '🌙⭐✨';
+            content: '✨💖✨';
             position: absolute;
             top: 50px;
             right: 50px;
             font-size: 3rem;
-            opacity: 0.3;
-            animation: twinkle 3s ease-in-out infinite;
+            opacity: 0.4;
+            animation: sparkle 2s ease-in-out infinite;
         }
         
         .art-workspace::after {
-            content: '🌸🌺🌻';
+            content: '🌸💕🌺';
             position: absolute;
             bottom: 50px;
             left: 50px;
             font-size: 3rem;
-            opacity: 0.3;
-            animation: float 4s ease-in-out infinite;
+            opacity: 0.4;
+            animation: bounce 3s ease-in-out infinite;
         }
         
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.3; transform: scale(1); }
-            50% { opacity: 0.6; transform: scale(1.1); }
+        @keyframes sparkle {
+            0%, 100% { opacity: 0.4; transform: scale(1) rotate(0deg); }
+            50% { opacity: 0.7; transform: scale(1.2) rotate(10deg); }
         }
         
-        @keyframes float {
+        @keyframes bounce {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
+            50% { transform: translateY(-15px); }
         }
         
         .art-header {
             text-align: center;
             padding: 4rem 2rem 2rem;
-            color: white;
+            color: #831843;
             position: relative;
             z-index: 1;
         }
@@ -54,18 +54,20 @@
         .art-header h1 {
             font-size: 3.5rem;
             margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-            background: linear-gradient(135deg, #ffffff 0%, #e9d5ff 100%);
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+            background: linear-gradient(135deg, #ec4899 0%, #f472b6 50%, #fbcfe8 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            font-weight: 700;
         }
         
         .art-header p {
             font-size: 1.3rem;
-            opacity: 0.95;
+            color: #9f1239;
             max-width: 700px;
             margin: 0 auto;
+            font-weight: 500;
         }
         
         .art-gallery {
@@ -80,34 +82,36 @@
         }
         
         .art-piece {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 20px;
             padding: 2rem;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 8px 25px rgba(236, 72, 153, 0.2);
+            border: 3px solid #fce7f3;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             position: relative;
             overflow: hidden;
         }
         
         .art-piece::before {
-            content: '🎨';
+            content: '💖✨';
             position: absolute;
             top: 10px;
             right: 10px;
-            font-size: 2rem;
-            opacity: 0.1;
+            font-size: 1.5rem;
+            opacity: 0.3;
         }
         
         .art-piece:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(236, 72, 153, 0.3);
+            border-color: #f472b6;
         }
         
         .art-image {
             width: 100%;
             height: 250px;
-            background: linear-gradient(135deg, #e9d5ff 0%, #ddd6fe 100%);
-            border-radius: 10px;
+            background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 50%, #f9a8d4 100%);
+            border-radius: 15px;
             margin-bottom: 1.5rem;
             display: flex;
             align-items: center;
@@ -115,24 +119,19 @@
             font-size: 4rem;
             position: relative;
             overflow: hidden;
-        }
-        
-        .art-image::after {
-            content: '🖼️';
-            position: absolute;
-            opacity: 0.2;
+            border: 2px solid #fbcfe8;
         }
         
         .art-title {
-            font-size: 1.5rem;
-            color: #6d28d9;
+            font-size: 1.6rem;
+            color: #be185d;
             margin-bottom: 0.75rem;
-            font-weight: 600;
+            font-weight: 700;
         }
         
         .art-description {
             color: #4b5563;
-            line-height: 1.7;
+            line-height: 1.8;
             font-size: 1rem;
         }
         
@@ -140,20 +139,22 @@
             text-align: center;
             padding: 3rem 2rem;
             background: rgba(255, 255, 255, 0.95);
-            border-radius: 15px;
+            border-radius: 20px;
             margin: 2rem auto;
             max-width: 800px;
-            color: #6d28d9;
+            color: #be185d;
+            border: 3px solid #fce7f3;
         }
         
         .art-placeholder h3 {
             font-size: 2rem;
             margin-bottom: 1rem;
+            color: #ec4899;
         }
         
         .art-placeholder p {
             font-size: 1.1rem;
-            color: #6b7280;
+            color: #9f1239;
         }
         
         @media (max-width: 768px) {
@@ -254,70 +255,70 @@
 
     <main class="art-workspace">
         <div class="art-header">
-            <h1>Susan's Art Workspace</h1>
-            <p>Welcome to a creative space showcasing accounting-themed artwork. Explore unique pieces that blend the analytical world of accounting with artistic expression.</p>
+            <h1>Susan's Art Workspace ✨</h1>
+            <p>OMG, like, welcome to my totally awesome creative space! 💖 Here's where I showcase my like, super cute accounting-themed artwork. It's, like, the perfect blend of numbers and art, you know?</p>
         </div>
         
         <div class="art-gallery">
             <div class="art-piece">
-                <div class="art-image" style="background: linear-gradient(135deg, #e9d5ff 0%, #ddd6fe 100%);">
-                    🎨
-                </div>
-                <h3 class="art-title">The Balanced Ledger</h3>
-                <p class="art-description">A vibrant interpretation of accounting balance, featuring colorful graphs and charts that dance across the canvas. This piece represents the harmony found in perfectly balanced books and the beauty of financial precision.</p>
-            </div>
-            
-            <div class="art-piece">
                 <div class="art-image" style="background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%);">
-                    🌸
+                    🎨✨
                 </div>
-                <h3 class="art-title">Flowers of Finance</h3>
-                <p class="art-description">Delicate floral patterns intertwine with financial symbols, creating a garden of numbers and blooms. Each flower represents a different aspect of accounting - from audits to tax preparation - blooming together in harmony.</p>
+                <h3 class="art-title">The Balanced Ledger 💕</h3>
+                <p class="art-description">OMG, this is like, so cute! It's this totally vibrant interpretation of accounting balance, with like, colorful graphs and charts that literally dance across the canvas. It's all about that perfect harmony when your books are, like, totally balanced, you know?</p>
             </div>
             
             <div class="art-piece">
-                <div class="art-image" style="background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%); color: white;">
-                    🌙⭐
+                <div class="art-image" style="background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%);">
+                    🌸💖
                 </div>
-                <h3 class="art-title">Starry Night of Numbers</h3>
-                <p class="art-description">Inspired by Van Gogh's Starry Night, this piece features a swirling night sky filled with glowing numbers and mathematical equations. The stars represent data points, while the flowing patterns symbolize the continuous cycle of financial reporting.</p>
+                <h3 class="art-title">Flowers of Finance 🌺</h3>
+                <p class="art-description">Like, how cute is this? Delicate floral patterns totally intertwine with financial symbols, creating this like, super pretty garden of numbers and blooms. Each flower represents something different in accounting - from audits to taxes - all blooming together in perfect harmony!</p>
+            </div>
+            
+            <div class="art-piece">
+                <div class="art-image" style="background: linear-gradient(135deg, #fce7f3 0%, #f9a8d4 100%);">
+                    🌙⭐✨
+                </div>
+                <h3 class="art-title">Starry Night of Numbers 💫</h3>
+                <p class="art-description">Inspired by, like, Van Gogh's Starry Night (which is, like, totally iconic!), this piece has this swirling night sky filled with glowing numbers and equations. The stars are like data points, and the whole thing just flows like financial reporting cycles. So dreamy!</p>
             </div>
             
             <div class="art-piece">
                 <div class="art-image" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
-                    👤
+                    👤💕
                 </div>
-                <h3 class="art-title">Mona Lisa of Accounting</h3>
-                <p class="art-description">A reimagining of the famous Mona Lisa, but with a modern accounting twist. The mysterious smile is replaced with a confident expression, surrounded by subtle references to financial statements and accounting principles hidden within the composition.</p>
-            </div>
-            
-            <div class="art-piece">
-                <div class="art-image" style="background: linear-gradient(135deg, #ddd6fe 0%, #c4b5fd 100%);">
-                    📊
-                </div>
-                <h3 class="art-title">Abstract Analytics</h3>
-                <p class="art-description">Bold, abstract shapes and colors represent the dynamic nature of financial analysis. This piece captures the energy and movement of market trends, financial forecasts, and the ever-changing landscape of accounting.</p>
+                <h3 class="art-title">Mona Lisa of Accounting 🎭</h3>
+                <p class="art-description">Okay, so this is like, a reimagining of the famous Mona Lisa, but with this totally modern accounting vibe! Instead of that mysterious smile, she's got this confident expression, and there are like, subtle references to financial statements hidden in the background. So chic!</p>
             </div>
             
             <div class="art-piece">
                 <div class="art-image" style="background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%);">
-                    💼
+                    📊💖
                 </div>
-                <h3 class="art-title">The Professional Canvas</h3>
-                <p class="art-description">A minimalist piece that celebrates the elegance of professional accounting. Clean lines and structured forms represent the precision and clarity that defines excellent accounting practice, while subtle color accents add warmth and personality.</p>
+                <h3 class="art-title">Abstract Analytics ✨</h3>
+                <p class="art-description">This one is like, so bold and fun! Abstract shapes and colors that totally represent the dynamic nature of financial analysis. It captures all that energy from market trends and forecasts. Like, who knew accounting could be this colorful?</p>
+            </div>
+            
+            <div class="art-piece">
+                <div class="art-image" style="background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%);">
+                    💼🌸
+                </div>
+                <h3 class="art-title">The Professional Canvas 💖</h3>
+                <p class="art-description">This minimalist piece is like, so elegant! It celebrates professional accounting with clean lines and structured forms. It shows that precision and clarity that makes accounting, like, totally awesome, while adding these cute color accents for warmth. Love it!</p>
             </div>
         </div>
         
         <div class="art-placeholder">
-            <h3>More Art Coming Soon</h3>
-            <p>Susan continues to create new accounting-themed artwork. Check back regularly to see the latest additions to the collection!</p>
+            <h3>More Art Coming Soon! ✨</h3>
+            <p>OMG, I'm, like, totally working on more pieces all the time! 💖 Check back soon to see all my new accounting-themed artwork. It's going to be, like, so amazing! 🌸</p>
         </div>
     </main>
 
-    <footer style="background-color: #4c1d95; color: white;">
+    <footer style="background-color: #ec4899; color: white;">
         <div class="container">
             <p>&copy; 2024 NXT CPA. All rights reserved.</p>
-            <p>Helping students find their path in accounting.</p>
+            <p>Helping students find their path in accounting. 💖</p>
         </div>
     </footer>
 
