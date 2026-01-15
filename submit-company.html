@@ -102,7 +102,15 @@
                     </ul>
                 </div>
 
-                <form id="company-submission-form" style="max-width: 800px; margin: 3rem auto; background-color: var(--bg-white); padding: 2.5rem; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                <!-- 
+                    SETUP INSTRUCTIONS:
+                    1. Go to https://formspree.io and sign up for a free account
+                    2. Click "New Form" and create a form
+                    3. Copy your form endpoint (looks like: https://formspree.io/f/xxxxxxxxxx)
+                    4. Replace "YOUR_FORM_ID_HERE" below with just the ID part (the xxxxxxxx)
+                    5. In Formspree settings, set the email to: jdenham@falcon.bentley.edu
+                -->
+                <form id="company-submission-form" action="https://formspree.io/f/xjggkale" method="POST" style="max-width: 800px; margin: 3rem auto; background-color: var(--bg-white); padding: 2.5rem; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
                     <div style="margin-bottom: 2rem;">
                         <label for="internship-level" style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-dark);">Internship Level *</label>
                         <select id="internship-level" name="internship-level" required style="width: 100%; padding: 0.75rem; border: 2px solid var(--border-color); border-radius: 5px; font-size: 1rem; font-family: inherit;">
@@ -144,6 +152,7 @@
         function initForm() {
             const form = document.getElementById('company-submission-form');
             const messageDiv = document.getElementById('form-message');
+            const submitButton = form ? form.querySelector('button[type="submit"]') : null;
 
             if (!form || !messageDiv) {
                 // If not found, wait a bit and try again
@@ -155,26 +164,12 @@
 
             form.addEventListener('submit', function(e) {
                 e.preventDefault();
-                e.stopPropagation();
                 
                 console.log('Form submit event triggered!');
 
                 // Get form data
                 const formData = new FormData(form);
                 const data = Object.fromEntries(formData);
-
-                // Format the data for email or display
-                let formattedMessage = 'Thank you for your submission! Here is a copy of the information you provided:\n\n';
-                formattedMessage += `Internship Level: ${data['internship-level']}\n`;
-                formattedMessage += `Company Name: ${data['company-name']}\n\n`;
-
-                // Create email body
-                const emailSubject = encodeURIComponent('New Company Submission - ' + data['company-name']);
-                const emailBody = encodeURIComponent(
-                    'New Company Submission for NXT CPA\n\n' +
-                    'Internship Level: ' + data['internship-level'] + '\n' +
-                    'Company Name: ' + data['company-name']
-                );
 
                 // Check if required fields are filled
                 const internshipLevel = data['internship-level'];
@@ -190,43 +185,92 @@
                     return;
                 }
 
-                console.log('Form data:', data);
+                // Disable submit button and show loading
+                if (submitButton) {
+                    submitButton.disabled = true;
+                    submitButton.textContent = 'Sending...';
+                }
 
-                // Display success message
-                messageDiv.style.display = 'block';
-                messageDiv.style.backgroundColor = '#d4edda';
-                messageDiv.style.color = '#155724';
-                messageDiv.style.border = '1px solid #c3e6cb';
-                messageDiv.innerHTML = `
-                    <strong>Thank you for your submission!</strong><br><br>
-                    Your company information has been prepared. Click the button below to send it via email, or copy the information shown below.<br><br>
-                    <div style="margin: 1.5rem 0; text-align: center;">
-                        <a href="mailto:jdenham@falcon.bentley.edu?subject=${emailSubject}&body=${emailBody}" 
-                           style="display: inline-block; padding: 0.75rem 2rem; background-color: var(--primary-color); color: white; text-decoration: none; border-radius: 5px; font-weight: 600; margin-right: 1rem;">
-                            📧 Send via Email
-                        </a>
-                    </div>
-                    <details style="margin-top: 1rem;">
-                        <summary style="cursor: pointer; font-weight: 600; margin-bottom: 0.5rem;">View Formatted Information</summary>
-                        <pre style="background: white; padding: 1rem; border-radius: 5px; text-align: left; overflow-x: auto; margin-top: 0.5rem; white-space: pre-wrap;">${formattedMessage}</pre>
-                    </details>
-                    <p style="margin-top: 1rem; font-size: 0.9rem;"><strong>Note:</strong> Submissions will be sent to jdenham@falcon.bentley.edu for review.</p>
-                `;
+                // Add hidden fields for Formspree
+                const hiddenEmail = document.createElement('input');
+                hiddenEmail.type = 'hidden';
+                hiddenEmail.name = '_to';
+                hiddenEmail.value = 'jdenham@falcon.bentley.edu';
+                form.appendChild(hiddenEmail);
 
-                // Scroll to message
-                messageDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                const hiddenSubject = document.createElement('input');
+                hiddenSubject.type = 'hidden';
+                hiddenSubject.name = '_subject';
+                hiddenSubject.value = 'New Company Submission - ' + companyName;
+                form.appendChild(hiddenSubject);
 
-                // Don't reset form automatically - let user review first
-            });
+                // Submit the form to Formspree
+                fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        // Show success message
+                        messageDiv.style.display = 'block';
+                        messageDiv.style.backgroundColor = '#d4edda';
+                        messageDiv.style.color = '#155724';
+                        messageDiv.style.border = '1px solid #c3e6cb';
+                        messageDiv.innerHTML = `
+                            <strong>✓ Thank you for your submission!</strong><br><br>
+                            Your company information has been successfully sent to jdenham@falcon.bentley.edu. We'll review it and add it to our listings if it meets our criteria.<br><br>
+                            <strong>Submitted Information:</strong><br>
+                            <ul style="margin-top: 0.5rem; padding-left: 1.5rem;">
+                                <li><strong>Internship Level:</strong> ${internshipLevel}</li>
+                                <li><strong>Company Name:</strong> ${companyName}</li>
+                            </ul>
+                        `;
 
-            // Also handle button click directly as additional fallback
-            const submitButton = form.querySelector('button[type="submit"]');
-            if (submitButton) {
-                submitButton.addEventListener('click', function(e) {
-                    console.log('Button clicked!');
-                    // The form submit event should handle it, but just in case
+                        // Reset form
+                        form.reset();
+                        
+                        // Re-enable submit button
+                        if (submitButton) {
+                            submitButton.disabled = false;
+                            submitButton.textContent = 'Submit Company Information';
+                        }
+
+                        // Scroll to message
+                        messageDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    } else {
+                        throw new Error('Form submission failed');
+                    }
+                })
+                .catch(error => {
+                    console.log('FAILED...', error);
+                    
+                    // Show error message
+                    messageDiv.style.display = 'block';
+                    messageDiv.style.backgroundColor = '#f8d7da';
+                    messageDiv.style.color = '#721c24';
+                    messageDiv.style.border = '1px solid #f5c6cb';
+                    messageDiv.innerHTML = `
+                        <strong>Error:</strong> There was a problem sending your submission. Please try again or contact us directly at jdenham@falcon.bentley.edu.<br><br>
+                        <strong>Your Information:</strong><br>
+                        <ul style="margin-top: 0.5rem; padding-left: 1.5rem;">
+                            <li><strong>Internship Level:</strong> ${internshipLevel}</li>
+                            <li><strong>Company Name:</strong> ${companyName}</li>
+                        </ul>
+                    `;
+
+                    // Re-enable submit button
+                    if (submitButton) {
+                        submitButton.disabled = false;
+                        submitButton.textContent = 'Submit Company Information';
+                    }
+
+                    // Scroll to message
+                    messageDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
                 });
-            }
+            });
 
             console.log('Event listeners attached successfully!');
         }
