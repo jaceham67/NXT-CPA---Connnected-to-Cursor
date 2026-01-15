@@ -118,44 +118,6 @@
                         <input type="text" id="company-name" name="company-name" required style="width: 100%; padding: 0.75rem; border: 2px solid var(--border-color); border-radius: 5px; font-size: 1rem; font-family: inherit;">
                     </div>
 
-                    <div style="margin-bottom: 2rem;">
-                        <label for="careers-url" style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-dark);">Careers Page URL *</label>
-                        <input type="url" id="careers-url" name="careers-url" placeholder="https://www.company.com/careers" required style="width: 100%; padding: 0.75rem; border: 2px solid var(--border-color); border-radius: 5px; font-size: 1rem; font-family: inherit;">
-                    </div>
-
-                    <div style="margin-bottom: 2rem;">
-                        <label for="company-location" style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-dark);">Company Location (City, State/Region)</label>
-                        <input type="text" id="company-location" name="company-location" placeholder="e.g., Boston, MA or Greater Boston Area" style="width: 100%; padding: 0.75rem; border: 2px solid var(--border-color); border-radius: 5px; font-size: 1rem; font-family: inherit;">
-                    </div>
-
-                    <div style="margin-bottom: 2rem;">
-                        <label for="company-type" style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-dark);">Company Type</label>
-                        <select id="company-type" name="company-type" style="width: 100%; padding: 0.75rem; border: 2px solid var(--border-color); border-radius: 5px; font-size: 1rem; font-family: inherit;">
-                            <option value="">Select type...</option>
-                            <option value="big4">Big 4</option>
-                            <option value="global7">Global 7 / Midsize Firm</option>
-                            <option value="regional">Regional Firm</option>
-                            <option value="local">Local/Small Firm</option>
-                            <option value="boutique">Boutique/Specialized</option>
-                            <option value="bank">Bank/Financial Institution</option>
-                            <option value="other">Other</option>
-                        </select>
-                    </div>
-
-                    <div style="margin-bottom: 2rem;">
-                        <label for="additional-info" style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-dark);">Additional Information</label>
-                        <textarea id="additional-info" name="additional-info" rows="5" placeholder="Any additional details about the internship program, application process, deadlines, or requirements..." style="width: 100%; padding: 0.75rem; border: 2px solid var(--border-color); border-radius: 5px; font-size: 1rem; font-family: inherit; resize: vertical;"></textarea>
-                    </div>
-
-                    <div style="margin-bottom: 2rem;">
-                        <label for="submitter-name" style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-dark);">Your Name (Optional)</label>
-                        <input type="text" id="submitter-name" name="submitter-name" style="width: 100%; padding: 0.75rem; border: 2px solid var(--border-color); border-radius: 5px; font-size: 1rem; font-family: inherit;">
-                    </div>
-
-                    <div style="margin-bottom: 2rem;">
-                        <label for="submitter-email" style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-dark);">Your Email (Optional - for follow-up if needed)</label>
-                        <input type="email" id="submitter-email" name="submitter-email" placeholder="your.email@example.com" style="width: 100%; padding: 0.75rem; border: 2px solid var(--border-color); border-radius: 5px; font-size: 1rem; font-family: inherit;">
-                    </div>
 
                     <div id="form-message" style="margin-bottom: 1.5rem; padding: 1rem; border-radius: 5px; display: none;"></div>
 
@@ -204,34 +166,21 @@
                 // Format the data for email or display
                 let formattedMessage = 'Thank you for your submission! Here is a copy of the information you provided:\n\n';
                 formattedMessage += `Internship Level: ${data['internship-level']}\n`;
-                formattedMessage += `Company Name: ${data['company-name']}\n`;
-                formattedMessage += `Careers URL: ${data['careers-url']}\n`;
-                formattedMessage += `Location: ${data['company-location'] || 'Not provided'}\n`;
-                formattedMessage += `Company Type: ${data['company-type'] || 'Not provided'}\n`;
-                formattedMessage += `Additional Info: ${data['additional-info'] || 'None provided'}\n`;
-                formattedMessage += `Submitted by: ${data['submitter-name'] || 'Anonymous'}\n`;
-                formattedMessage += `Email: ${data['submitter-email'] || 'Not provided'}\n\n`;
+                formattedMessage += `Company Name: ${data['company-name']}\n\n`;
 
                 // Create email body
                 const emailSubject = encodeURIComponent('New Company Submission - ' + data['company-name']);
                 const emailBody = encodeURIComponent(
                     'New Company Submission for NXT CPA\n\n' +
                     'Internship Level: ' + data['internship-level'] + '\n' +
-                    'Company Name: ' + data['company-name'] + '\n' +
-                    'Careers URL: ' + data['careers-url'] + '\n' +
-                    'Location: ' + (data['company-location'] || 'Not provided') + '\n' +
-                    'Company Type: ' + (data['company-type'] || 'Not provided') + '\n' +
-                    'Additional Info: ' + (data['additional-info'] || 'None provided') + '\n' +
-                    'Submitted by: ' + (data['submitter-name'] || 'Anonymous') + '\n' +
-                    'Email: ' + (data['submitter-email'] || 'Not provided')
+                    'Company Name: ' + data['company-name']
                 );
 
                 // Check if required fields are filled
                 const internshipLevel = data['internship-level'];
                 const companyName = data['company-name'];
-                const careersUrl = data['careers-url'];
 
-                if (!internshipLevel || !companyName || !careersUrl) {
+                if (!internshipLevel || !companyName) {
                     messageDiv.style.display = 'block';
                     messageDiv.style.backgroundColor = '#f8d7da';
                     messageDiv.style.color = '#721c24';
