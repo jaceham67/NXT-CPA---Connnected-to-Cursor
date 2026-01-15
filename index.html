@@ -3,7 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NXT CPA - Find Your Accounting Internship</title>
+    <title>NXT CPA - Find Your Accounting Internship | Land Your Dream Accounting Internship</title>
+    <meta name="description" content="Discover how to land your dream accounting internship. Complete guide for freshmen, sophomores, and juniors. Find Big 4 internships, application tips, interview strategies, and company listings.">
+    <meta name="keywords" content="accounting internship, freshman internship, sophomore internship, junior internship, Big 4 internship, CPA internship, accounting careers, internship guide, accounting jobs">
+    <meta name="author" content="NXT CPA">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="NXT CPA - Find Your Accounting Internship">
+    <meta property="og:description" content="Complete guide to landing accounting internships. Resources for freshmen, sophomores, and juniors.">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="NXT CPA - Find Your Accounting Internship">
+    <meta name="twitter:description" content="Complete guide to landing accounting internships. Resources for freshmen, sophomores, and juniors.">
+    
     <link rel="stylesheet" href="styles.css">
     
     <!-- Google tag (gtag.js) -->
@@ -99,9 +113,45 @@
         <!-- Hero Section -->
         <section class="hero">
             <div class="hero-content">
-                <h2>Land Your Dream Accounting Internship</h2>
+                <h1>Land Your Dream Accounting Internship</h1>
                 <p>Connecting ambitious students with premier accounting opportunities</p>
                 <a href="learn-more.html#overview" class="cta-button">Get Started</a>
+            </div>
+        </section>
+
+        <!-- Newsletter Signup Section -->
+        <section class="content-section" style="background-color: var(--primary-color); color: white; padding: 4rem 2rem;">
+            <div class="container" style="max-width: 600px; text-align: center;">
+                <h2 style="color: white; margin-bottom: 1rem;">Stay Updated</h2>
+                <p style="font-size: 1.1rem; margin-bottom: 2rem; opacity: 0.95;">Get weekly internship opportunities, recruiting tips, and industry insights delivered to your inbox.</p>
+                <form id="newsletter-form" action="https://formspree.io/f/xjggkale" method="POST" style="display: flex; flex-direction: column; gap: 1rem; align-items: center;">
+                    <input type="hidden" name="_to" value="jdenham@falcon.bentley.edu">
+                    <input type="hidden" name="_subject" value="Newsletter Signup - NXT CPA">
+                    <input type="hidden" name="_template" value="plain">
+                    <input 
+                        type="email" 
+                        id="newsletter-email" 
+                        name="email" 
+                        placeholder="Enter your email address" 
+                        required
+                        style="width: 100%; max-width: 400px; padding: 1rem; border: none; border-radius: 5px; font-size: 1rem; font-family: inherit;"
+                    >
+                    <input 
+                        type="text" 
+                        name="newsletter_signup" 
+                        value="yes" 
+                        style="display: none;"
+                    >
+                    <button 
+                        type="submit" 
+                        style="width: 100%; max-width: 400px; padding: 1rem; background-color: white; color: var(--primary-color); border: none; border-radius: 5px; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease;"
+                        onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 8px rgba(0,0,0,0.2)'"
+                        onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'"
+                    >
+                        Subscribe
+                    </button>
+                </form>
+                <p id="newsletter-message" style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.9; display: none;"></p>
             </div>
         </section>
     </main>
@@ -115,5 +165,134 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        // Newsletter form handling
+        document.addEventListener('DOMContentLoaded', function() {
+            const newsletterForm = document.getElementById('newsletter-form');
+            const newsletterMessage = document.getElementById('newsletter-message');
+            const newsletterEmail = document.getElementById('newsletter-email');
+            const submitButton = newsletterForm ? newsletterForm.querySelector('button[type="submit"]') : null;
+
+            if (newsletterForm) {
+                newsletterForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+
+                    const email = newsletterEmail.value;
+
+                    // Disable button and show loading
+                    if (submitButton) {
+                        submitButton.disabled = true;
+                        submitButton.textContent = 'Subscribing...';
+                    }
+
+                    // Create form data
+                    const formData = new FormData(newsletterForm);
+
+                    // Submit to Formspree
+                    fetch(newsletterForm.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            // Show success message
+                            newsletterMessage.style.display = 'block';
+                            newsletterMessage.style.color = '#90EE90';
+                            newsletterMessage.textContent = '✓ Thanks for subscribing! Check your email for confirmation.';
+                            
+                            // Reset form
+                            newsletterForm.reset();
+                            
+                            // Re-enable button
+                            if (submitButton) {
+                                submitButton.disabled = false;
+                                submitButton.textContent = 'Subscribe';
+                            }
+                        } else {
+                            throw new Error('Subscription failed');
+                        }
+                    })
+                    .catch(error => {
+                        // Show error message
+                        newsletterMessage.style.display = 'block';
+                        newsletterMessage.style.color = '#FFB6C1';
+                        newsletterMessage.textContent = 'Something went wrong. Please try again.';
+                        
+                        // Re-enable button
+                        if (submitButton) {
+                            submitButton.disabled = false;
+                            submitButton.textContent = 'Subscribe';
+                        }
+                    });
+                });
+            }
+
+            // Footer newsletter form handling
+            const footerNewsletterForm = document.getElementById('footer-newsletter-form');
+            const footerNewsletterMessage = document.getElementById('footer-newsletter-message');
+            const footerNewsletterEmail = document.getElementById('footer-newsletter-email');
+            const footerSubmitButton = footerNewsletterForm ? footerNewsletterForm.querySelector('button[type="submit"]') : null;
+
+            if (footerNewsletterForm) {
+                footerNewsletterForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+
+                    const email = footerNewsletterEmail.value;
+
+                    // Disable button and show loading
+                    if (footerSubmitButton) {
+                        footerSubmitButton.disabled = true;
+                        footerSubmitButton.textContent = '...';
+                    }
+
+                    // Create form data
+                    const formData = new FormData(footerNewsletterForm);
+
+                    // Submit to Formspree
+                    fetch(footerNewsletterForm.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            // Show success message
+                            footerNewsletterMessage.style.display = 'block';
+                            footerNewsletterMessage.style.color = '#90EE90';
+                            footerNewsletterMessage.textContent = '✓ Subscribed!';
+                            
+                            // Reset form
+                            footerNewsletterForm.reset();
+                            
+                            // Re-enable button
+                            if (footerSubmitButton) {
+                                footerSubmitButton.disabled = false;
+                                footerSubmitButton.textContent = 'Subscribe';
+                            }
+                        } else {
+                            throw new Error('Subscription failed');
+                        }
+                    })
+                    .catch(error => {
+                        // Show error message
+                        footerNewsletterMessage.style.display = 'block';
+                        footerNewsletterMessage.style.color = '#FFB6C1';
+                        footerNewsletterMessage.textContent = 'Error. Try again.';
+                        
+                        // Re-enable button
+                        if (footerSubmitButton) {
+                            footerSubmitButton.disabled = false;
+                            footerSubmitButton.textContent = 'Subscribe';
+                        }
+                    });
+                });
+            }
+        });
+    </script>
 </body>
 </html>

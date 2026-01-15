@@ -3,7 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accounting Internship Overview - NXT CPA</title>
+    <title>Accounting Internship Overview | Types of CPA Firms & Accounting Jobs Guide</title>
+    <meta name="description" content="Complete accounting internship overview. Learn about Big 4 firms, Global 7 firms, different accounting jobs (audit, tax, advisory), salary ranges, hours, and career paths.">
+    <meta name="keywords" content="accounting internship, CPA firms, Big 4 accounting, accounting jobs, audit vs tax, accounting careers, CPA firm types, accounting salary">
+    <meta name="author" content="NXT CPA">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Accounting Internship Overview - NXT CPA">
+    <meta property="og:description" content="Complete overview of accounting internships, CPA firms, and accounting career paths.">
+    
     <link rel="stylesheet" href="styles.css">
     
     <!-- Google tag (gtag.js) -->
@@ -99,7 +108,7 @@
         <!-- Overview Section -->
         <section id="overview" class="content-section" style="scroll-margin-top: 100px;">
             <div class="container">
-                <h2>Accounting Internship Overview</h2>
+                <h1>Accounting Internship Overview</h1>
                 <p class="intro-text">Welcome to your comprehensive guide to accounting internships! Whether you're a freshman exploring your first professional experience or a junior preparing for your most important recruiting cycle, understanding the accounting industry landscape is crucial to your success.</p>
                 
                 <div class="jobs-grid" style="margin-top: 2rem;">
@@ -395,6 +404,32 @@
 
     <footer>
         <div class="container">
+            <div style="display: flex; flex-direction: column; gap: 1.5rem; margin-bottom: 2rem;">
+                <div>
+                    <h4 style="margin-bottom: 0.75rem; font-size: 1.1rem;">Newsletter</h4>
+                    <p style="font-size: 0.9rem; margin-bottom: 1rem; opacity: 0.9;">Get weekly internship updates and recruiting tips.</p>
+                    <form id="footer-newsletter-form" action="https://formspree.io/f/xjggkale" method="POST" style="display: flex; gap: 0.5rem; max-width: 400px;">
+                        <input type="hidden" name="_to" value="jdenham@falcon.bentley.edu">
+                        <input type="hidden" name="_subject" value="Newsletter Signup - NXT CPA">
+                        <input type="hidden" name="newsletter_signup" value="yes">
+                        <input 
+                            type="email" 
+                            id="footer-newsletter-email" 
+                            name="email" 
+                            placeholder="Your email" 
+                            required
+                            style="flex: 1; padding: 0.75rem; border: 1px solid rgba(255,255,255,0.3); border-radius: 5px; background-color: rgba(255,255,255,0.1); color: white; font-size: 0.9rem;"
+                        >
+                        <button 
+                            type="submit" 
+                            style="padding: 0.75rem 1.5rem; background-color: var(--accent-color); color: white; border: none; border-radius: 5px; font-weight: 600; cursor: pointer; font-size: 0.9rem; white-space: nowrap;"
+                        >
+                            Subscribe
+                        </button>
+                    </form>
+                    <p id="footer-newsletter-message" style="margin-top: 0.5rem; font-size: 0.85rem; display: none;"></p>
+                </div>
+            </div>
             <p>&copy; 2025 NXT CPA. All rights reserved.</p>
             <p>Helping students find their path in accounting.</p>
             <p style="font-size: 0.85rem; margin-top: 0.5rem; opacity: 0.8;"><a href="privacy-policy.html" style="color: white; text-decoration: underline;">Privacy Policy</a></p>
@@ -402,6 +437,69 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        // Footer newsletter form handling
+        document.addEventListener('DOMContentLoaded', function() {
+            const footerNewsletterForm = document.getElementById('footer-newsletter-form');
+            const footerNewsletterMessage = document.getElementById('footer-newsletter-message');
+            const footerSubmitButton = footerNewsletterForm ? footerNewsletterForm.querySelector('button[type="submit"]') : null;
+
+            if (footerNewsletterForm) {
+                footerNewsletterForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+
+                    // Disable button and show loading
+                    if (footerSubmitButton) {
+                        footerSubmitButton.disabled = true;
+                        footerSubmitButton.textContent = '...';
+                    }
+
+                    // Create form data
+                    const formData = new FormData(footerNewsletterForm);
+
+                    // Submit to Formspree
+                    fetch(footerNewsletterForm.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            // Show success message
+                            footerNewsletterMessage.style.display = 'block';
+                            footerNewsletterMessage.style.color = '#90EE90';
+                            footerNewsletterMessage.textContent = '✓ Subscribed!';
+                            
+                            // Reset form
+                            footerNewsletterForm.reset();
+                            
+                            // Re-enable button
+                            if (footerSubmitButton) {
+                                footerSubmitButton.disabled = false;
+                                footerSubmitButton.textContent = 'Subscribe';
+                            }
+                        } else {
+                            throw new Error('Subscription failed');
+                        }
+                    })
+                    .catch(error => {
+                        // Show error message
+                        footerNewsletterMessage.style.display = 'block';
+                        footerNewsletterMessage.style.color = '#FFB6C1';
+                        footerNewsletterMessage.textContent = 'Error. Try again.';
+                        
+                        // Re-enable button
+                        if (footerSubmitButton) {
+                            footerSubmitButton.disabled = false;
+                            footerSubmitButton.textContent = 'Subscribe';
+                        }
+                    });
+                });
+            }
+        });
+    </script>
 </body>
 </html>
 
