@@ -178,12 +178,24 @@
 
     <script src="script.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        // Wait for DOM to be ready
+        function initForm() {
             const form = document.getElementById('company-submission-form');
             const messageDiv = document.getElementById('form-message');
 
+            if (!form || !messageDiv) {
+                // If not found, wait a bit and try again
+                setTimeout(initForm, 100);
+                return;
+            }
+
+            console.log('Form and message div found!');
+
             form.addEventListener('submit', function(e) {
                 e.preventDefault();
+                e.stopPropagation();
+                
+                console.log('Form submit event triggered!');
 
                 // Get form data
                 const formData = new FormData(form);
@@ -214,6 +226,23 @@
                     'Email: ' + (data['submitter-email'] || 'Not provided')
                 );
 
+                // Check if required fields are filled
+                const internshipLevel = data['internship-level'];
+                const companyName = data['company-name'];
+                const careersUrl = data['careers-url'];
+
+                if (!internshipLevel || !companyName || !careersUrl) {
+                    messageDiv.style.display = 'block';
+                    messageDiv.style.backgroundColor = '#f8d7da';
+                    messageDiv.style.color = '#721c24';
+                    messageDiv.style.border = '1px solid #f5c6cb';
+                    messageDiv.innerHTML = '<strong>Error:</strong> Please fill in all required fields (marked with *).';
+                    messageDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    return;
+                }
+
+                console.log('Form data:', data);
+
                 // Display success message
                 messageDiv.style.display = 'block';
                 messageDiv.style.backgroundColor = '#d4edda';
@@ -240,7 +269,25 @@
 
                 // Don't reset form automatically - let user review first
             });
-        });
+
+            // Also handle button click directly as additional fallback
+            const submitButton = form.querySelector('button[type="submit"]');
+            if (submitButton) {
+                submitButton.addEventListener('click', function(e) {
+                    console.log('Button clicked!');
+                    // The form submit event should handle it, but just in case
+                });
+            }
+
+            console.log('Event listeners attached successfully!');
+        }
+
+        // Start initialization
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initForm);
+        } else {
+            initForm();
+        }
     </script>
 </body>
 </html>
