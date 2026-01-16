@@ -98,6 +98,7 @@
                             <li><a href="acing-your-interview.html#follow-up" class="dropdown-link">Follow-up Strategies</a></li>
                         </ul>
                     </li>
+                    <li><a href="coaching.html" class="nav-link">Coaching</a></li>
                     <li><a href="submit-company.html" class="nav-link">Submit a Company</a></li>
                 </ul>
                 <div class="hamburger">
@@ -115,7 +116,10 @@
             <div class="hero-content">
                 <h1>Land Your Dream Accounting Internship</h1>
                 <p>Connecting ambitious students with premier accounting opportunities</p>
-                <a href="learn-more.html#overview" class="cta-button">Get Started</a>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem;">
+                    <a href="learn-more.html#overview" class="cta-button">Get Started</a>
+                    <a href="coaching.html" class="cta-button" style="background-color: rgba(255, 255, 255, 0.2); border: 2px solid white;">Get Coaching</a>
+                </div>
             </div>
         </section>
 
@@ -196,30 +200,51 @@
                             'Accept': 'application/json'
                         }
                     })
-                    .then(response => {
-                        if (response.ok) {
-                            // Show success message
-                            newsletterMessage.style.display = 'block';
-                            newsletterMessage.style.color = '#90EE90';
-                            newsletterMessage.textContent = '✓ Thanks for subscribing! Check your email for confirmation.';
-                            
-                            // Reset form
-                            newsletterForm.reset();
-                            
-                            // Re-enable button
-                            if (submitButton) {
-                                submitButton.disabled = false;
-                                submitButton.textContent = 'Subscribe';
+                    .then(async response => {
+                        console.log('Response status:', response.status);
+                        try {
+                            const data = await response.json();
+                            console.log('Response data:', data);
+                            if (response.ok) {
+                                // Show success message
+                                newsletterMessage.style.display = 'block';
+                                newsletterMessage.style.color = '#90EE90';
+                                newsletterMessage.textContent = '✓ Thanks for subscribing! Your email has been added to our list.';
+                                
+                                // Reset form
+                                newsletterForm.reset();
+                                
+                                // Re-enable button
+                                if (submitButton) {
+                                    submitButton.disabled = false;
+                                    submitButton.textContent = 'Subscribe';
+                                }
+                            } else {
+                                throw new Error(data.error || 'Subscription failed');
                             }
-                        } else {
-                            throw new Error('Subscription failed');
+                        } catch (parseError) {
+                            // If response is not JSON, check status
+                            if (response.ok) {
+                                // Show success message
+                                newsletterMessage.style.display = 'block';
+                                newsletterMessage.style.color = '#90EE90';
+                                newsletterMessage.textContent = '✓ Thanks for subscribing! Your email has been added to our list.';
+                                newsletterForm.reset();
+                                if (submitButton) {
+                                    submitButton.disabled = false;
+                                    submitButton.textContent = 'Subscribe';
+                                }
+                            } else {
+                                throw new Error('Subscription failed with status: ' + response.status);
+                            }
                         }
                     })
                     .catch(error => {
+                        console.error('Form submission error:', error);
                         // Show error message
                         newsletterMessage.style.display = 'block';
                         newsletterMessage.style.color = '#FFB6C1';
-                        newsletterMessage.textContent = 'Something went wrong. Please try again.';
+                        newsletterMessage.textContent = 'Error: ' + (error.message || 'Something went wrong. Please try again or contact us directly.');
                         
                         // Re-enable button
                         if (submitButton) {
