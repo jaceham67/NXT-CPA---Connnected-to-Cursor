@@ -1,0 +1,33 @@
+// Blog Posts Data
+// Add new blog posts here. They will automatically appear on the homepage carousel and relevant pages.
+
+const blogPosts = [
+    {
+        id: 1,
+        title: "The Freshman Internship: Navigating the Search and Ignoring the Skeptics",
+        category: "freshman",
+        date: "2026-01-20",
+        excerpt: "Securing an internship as a first-year student is challenging, but not impossible. Learn how to navigate the search process, ignore the skeptics, and secure valuable early professional experience.",
+        readTime: "8 min read",
+        link: "blog/freshman-internship-guide.html"
+    },
+];
+
+// Helper function to get formatted date
+function formatBlogDate(dateString) {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+}
+
+// Helper function to get blog posts by category
+function getBlogsByCategory(category) {
+    return blogPosts.filter(post => post.category === category);
+}
+
+// Helper function to get recent blog posts (for homepage)
+function getRecentBlogs(limit = 3) {
+    return blogPosts
+        .sort((a, b) => new Date(b.date) - new Date(a.date))
+        .slice(0, limit);
+}
+

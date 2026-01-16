@@ -22,6 +22,7 @@
     <meta name="twitter:description" content="Complete guide to landing accounting internships. Resources for freshmen, sophomores, and juniors.">
     
     <link rel="stylesheet" href="styles.css">
+    <script src="blog-data.js"></script>
     
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-MLM4XM3KKF"></script>
@@ -159,6 +160,32 @@
             </div>
         </section>
 
+        <!-- Blog Posts Carousel Section -->
+        <section class="content-section" style="scroll-margin-top: 100px; padding: 4rem 2rem; background-color: var(--bg-light);">
+            <div class="container">
+                <h2 style="text-align: center; margin-bottom: 1rem;">Latest Blog Posts</h2>
+                <p style="text-align: center; color: var(--text-light); margin-bottom: 3rem; font-size: 1.1rem;">Tips, strategies, and insights to help you land your dream internship</p>
+                
+                <div id="blog-carousel" class="blog-carousel">
+                    <div id="blog-carousel-container" class="blog-carousel-container">
+                        <!-- Blog posts will be inserted here by JavaScript -->
+                        <div class="blog-placeholder" style="text-align: center; padding: 3rem; color: var(--text-light);">
+                            <p style="font-size: 1.1rem;">Blog posts coming soon! Check back for tips and strategies.</p>
+                        </div>
+                    </div>
+                    <div class="blog-carousel-controls" style="display: none;">
+                        <button id="blog-prev" class="blog-carousel-btn" aria-label="Previous blog post">
+                            <span>‹</span>
+                        </button>
+                        <button id="blog-next" class="blog-carousel-btn" aria-label="Next blog post">
+                            <span>›</span>
+                        </button>
+                    </div>
+                    <div id="blog-carousel-dots" class="blog-carousel-dots" style="display: none;"></div>
+                </div>
+            </div>
+        </section>
+
         <!-- Newsletter Signup Section -->
         <section class="content-section" style="background-color: var(--primary-color); color: white; padding: 4rem 2rem;">
             <div class="container" style="max-width: 600px; text-align: center;">
@@ -198,7 +225,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 NXT CPA. All rights reserved.</p>
+            <p>&copy; 2026 NXT CPA. All rights reserved.</p>
             <p>NXT CPA - Helping students find their path in accounting. Your guide to accounting internships and career success.</p>
             <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-top: 1rem;">
                 <a href="https://www.linkedin.com/company/nxt-cpa" target="_blank" rel="noopener noreferrer" style="color: white; text-decoration: none; display: flex; align-items: center; gap: 0.5rem; font-size: 0.95rem; opacity: 0.9; transition: opacity 0.3s ease;">
