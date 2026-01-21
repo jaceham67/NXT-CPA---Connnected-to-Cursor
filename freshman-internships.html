@@ -284,30 +284,6 @@
     <footer>
         <div class="container">
             <div style="display: flex; flex-direction: column; gap: 1.5rem; margin-bottom: 2rem;">
-                <div>
-                    <h4 style="margin-bottom: 0.75rem; font-size: 1.1rem;">Newsletter</h4>
-                    <p style="font-size: 0.9rem; margin-bottom: 1rem; opacity: 0.9;">Get weekly internship updates and recruiting tips.</p>
-                    <form id="footer-newsletter-form" action="https://formspree.io/f/xjggkale" method="POST" style="display: flex; gap: 0.5rem; max-width: 400px;">
-                        <input type="hidden" name="_to" value="jdenham@falcon.bentley.edu">
-                        <input type="hidden" name="_subject" value="Newsletter Signup - NXT CPA">
-                        <input type="hidden" name="newsletter_signup" value="yes">
-                        <input 
-                            type="email" 
-                            id="footer-newsletter-email" 
-                            name="email" 
-                            placeholder="Your email" 
-                            required
-                            style="flex: 1; padding: 0.75rem; border: 1px solid rgba(255,255,255,0.3); border-radius: 5px; background-color: rgba(255,255,255,0.1); color: white; font-size: 0.9rem;"
-                        >
-                        <button 
-                            type="submit" 
-                            style="padding: 0.75rem 1.5rem; background-color: var(--accent-color); color: white; border: none; border-radius: 5px; font-weight: 600; cursor: pointer; font-size: 0.9rem; white-space: nowrap;"
-                        >
-                            Subscribe
-                        </button>
-                    </form>
-                    <p id="footer-newsletter-message" style="margin-top: 0.5rem; font-size: 0.85rem; display: none;"></p>
-                </div>
             </div>
             <p>&copy; 2026 NXT CPA. All rights reserved.</p>
             <p>Helping students find their path in accounting.</p>
@@ -325,49 +301,7 @@
 
     <script src="script.js"></script>
     <script>
-        // Footer newsletter form handling
         document.addEventListener('DOMContentLoaded', function() {
-            const footerNewsletterForm = document.getElementById('footer-newsletter-form');
-            const footerNewsletterMessage = document.getElementById('footer-newsletter-message');
-            const footerSubmitButton = footerNewsletterForm ? footerNewsletterForm.querySelector('button[type="submit"]') : null;
-
-            if (footerNewsletterForm) {
-                footerNewsletterForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    if (footerSubmitButton) {
-                        footerSubmitButton.disabled = true;
-                        footerSubmitButton.textContent = '...';
-                    }
-                    const formData = new FormData(footerNewsletterForm);
-                    fetch(footerNewsletterForm.action, {
-                        method: 'POST',
-                        body: formData,
-                        headers: { 'Accept': 'application/json' }
-                    })
-                    .then(response => {
-                        if (response.ok) {
-                            footerNewsletterMessage.style.display = 'block';
-                            footerNewsletterMessage.style.color = '#90EE90';
-                            footerNewsletterMessage.textContent = '✓ Subscribed!';
-                            footerNewsletterForm.reset();
-                            if (footerSubmitButton) {
-                                footerSubmitButton.disabled = false;
-                                footerSubmitButton.textContent = 'Subscribe';
-                            }
-                        } else { throw new Error('Subscription failed'); }
-                    })
-                    .catch(error => {
-                        footerNewsletterMessage.style.display = 'block';
-                        footerNewsletterMessage.style.color = '#FFB6C1';
-                        footerNewsletterMessage.textContent = 'Error. Try again.';
-                        if (footerSubmitButton) {
-                            footerSubmitButton.disabled = false;
-                            footerSubmitButton.textContent = 'Subscribe';
-                        }
-                    });
-                });
-            }
-
             // Display freshman blog posts
             const blogContainer = document.getElementById('freshman-blog-posts');
             if (blogContainer) {
