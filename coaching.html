@@ -102,7 +102,6 @@
         <!-- Hero Section -->
         <section class="hero" style="background: linear-gradient(135deg, #003366 0%, #004080 50%, #0052CC 100%); padding: 6rem 2rem;">
             <div class="hero-content">
-                <div style="background-color: #ff9800; color: white; padding: 0.75rem 2rem; border-radius: 30px; font-weight: 700; font-size: 1.1rem; display: inline-block; margin-bottom: 1.5rem; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);">🚀 COMING SOON</div>
                 <h1>NXT CPA Coaching</h1>
                 <p>Personalized one-on-one coaching to help you land your dream accounting internship</p>
             </div>
@@ -294,64 +293,6 @@
             </div>
         </section>
 
-        <!-- Book Now Section -->
-        <section class="content-section alt-bg" style="scroll-margin-top: 100px; padding: 4rem 2rem;">
-            <div class="container" style="max-width: 800px; text-align: center;">
-                <div style="background-color: #ff9800; color: white; padding: 0.75rem 2rem; border-radius: 30px; font-weight: 700; font-size: 1rem; display: inline-block; margin-bottom: 1.5rem; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);">🚀 COMING SOON</div>
-                <h2>Ready to Get Started?</h2>
-                <p style="font-size: 1.2rem; margin-bottom: 2rem; color: var(--text-light);">Coaching services will be launching soon! Check back for updates or contact us to be notified when we're ready.</p>
-                
-                <form id="coaching-form" action="https://formspree.io/f/xjggkale" method="POST" style="max-width: 600px; margin: 0 auto; background-color: var(--bg-white); padding: 2.5rem; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
-                    <input type="hidden" name="_to" value="jdenham@falcon.bentley.edu">
-                    <input type="hidden" name="_subject" value="Coaching Inquiry - NXT CPA">
-                    
-                    <div style="margin-bottom: 1.5rem;">
-                        <label for="coaching-name" style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-dark); text-align: left;">Name *</label>
-                        <input type="text" id="coaching-name" name="name" required style="width: 100%; padding: 0.75rem; border: 2px solid var(--border-color); border-radius: 5px; font-size: 1rem; font-family: inherit;">
-                    </div>
-                    
-                    <div style="margin-bottom: 1.5rem;">
-                        <label for="coaching-email" style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-dark); text-align: left;">Email *</label>
-                        <input type="email" id="coaching-email" name="email" required style="width: 100%; padding: 0.75rem; border: 2px solid var(--border-color); border-radius: 5px; font-size: 1rem; font-family: inherit;">
-                    </div>
-                    
-                    <div style="margin-bottom: 1.5rem;">
-                        <label for="coaching-year" style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-dark); text-align: left;">Year in School *</label>
-                        <select id="coaching-year" name="year" required style="width: 100%; padding: 0.75rem; border: 2px solid var(--border-color); border-radius: 5px; font-size: 1rem; font-family: inherit;">
-                            <option value="">Select year...</option>
-                            <option value="freshman">Freshman</option>
-                            <option value="sophomore">Sophomore</option>
-                            <option value="junior">Junior</option>
-                            <option value="senior">Senior</option>
-                            <option value="graduate">Graduate Student</option>
-                        </select>
-                    </div>
-                    
-                    <div style="margin-bottom: 1.5rem;">
-                        <label for="coaching-package" style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-dark); text-align: left;">Interested In *</label>
-                        <select id="coaching-package" name="package" required style="width: 100%; padding: 0.75rem; border: 2px solid var(--border-color); border-radius: 5px; font-size: 1rem; font-family: inherit;">
-                            <option value="">Select package...</option>
-                            <option value="free-discovery">Free 30-Minute Discovery Session</option>
-                            <option value="resume-building">Resume Building ($30)</option>
-                            <option value="single">Single Session ($45)</option>
-                            <option value="3-session">3-Session Package ($120)</option>
-                            <option value="6-session">6-Session Package ($210)</option>
-                        </select>
-                    </div>
-                    
-                    <div style="margin-bottom: 1.5rem;">
-                        <label for="coaching-message" style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-dark); text-align: left;">Tell us about your goals (optional)</label>
-                        <textarea id="coaching-message" name="message" rows="4" placeholder="What specific areas would you like help with? What firms are you targeting? Any questions?" style="width: 100%; padding: 0.75rem; border: 2px solid var(--border-color); border-radius: 5px; font-size: 1rem; font-family: inherit; resize: vertical;"></textarea>
-                    </div>
-                    
-                    <div id="coaching-message-div" style="margin-bottom: 1.5rem; padding: 1rem; border-radius: 5px; display: none;"></div>
-                    
-                    <button type="submit" style="width: 100%; padding: 1rem; background-color: var(--primary-color); color: white; border: none; border-radius: 5px; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: background-color 0.3s ease; opacity: 0.7; cursor: not-allowed;" disabled>Coming Soon - Join Waitlist</button>
-                </form>
-                
-                <p style="margin-top: 2rem; color: var(--text-light); font-size: 0.9rem;">Submit your information to be notified when coaching services launch. We'll contact you as soon as we're ready!</p>
-            </div>
-        </section>
     </main>
 
     <footer>
@@ -373,80 +314,6 @@
     </footer>
 
     <script src="script.js"></script>
-    <script>
-        // Coaching form handling
-        document.addEventListener('DOMContentLoaded', function() {
-            const coachingForm = document.getElementById('coaching-form');
-            const coachingMessageDiv = document.getElementById('coaching-message-div');
-            const submitButton = coachingForm ? coachingForm.querySelector('button[type="submit"]') : null;
-
-            if (coachingForm) {
-                coachingForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    
-                    if (submitButton) {
-                        submitButton.disabled = true;
-                        submitButton.textContent = 'Sending...';
-                    }
-
-                    const formData = new FormData(coachingForm);
-
-                    fetch(coachingForm.action, {
-                        method: 'POST',
-                        body: formData,
-                        headers: { 'Accept': 'application/json' }
-                    })
-                    .then(async response => {
-                        try {
-                            const data = await response.json();
-                            if (response.ok) {
-                                coachingMessageDiv.style.display = 'block';
-                                coachingMessageDiv.style.backgroundColor = '#d4edda';
-                                coachingMessageDiv.style.color = '#155724';
-                                coachingMessageDiv.style.border = '1px solid #c3e6cb';
-                                coachingMessageDiv.innerHTML = '<strong>✓ Thank you for your interest!</strong><br>We\'ll contact you within 24 hours to schedule your session.';
-                                coachingForm.reset();
-                                if (submitButton) {
-                                    submitButton.disabled = false;
-                                    submitButton.textContent = 'Send Inquiry';
-                                }
-                            } else {
-                                throw new Error(data.error || 'Submission failed');
-                            }
-                        } catch (parseError) {
-                            if (response.ok) {
-                                coachingMessageDiv.style.display = 'block';
-                                coachingMessageDiv.style.backgroundColor = '#d4edda';
-                                coachingMessageDiv.style.color = '#155724';
-                                coachingMessageDiv.style.border = '1px solid #c3e6cb';
-                                coachingMessageDiv.innerHTML = '<strong>✓ Thank you for your interest!</strong><br>We\'ll contact you within 24 hours to schedule your session.';
-                                coachingForm.reset();
-                                if (submitButton) {
-                                    submitButton.disabled = false;
-                                    submitButton.textContent = 'Send Inquiry';
-                                }
-                            } else {
-                                throw new Error('Submission failed');
-                            }
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                        coachingMessageDiv.style.display = 'block';
-                        coachingMessageDiv.style.backgroundColor = '#f8d7da';
-                        coachingMessageDiv.style.color = '#721c24';
-                        coachingMessageDiv.style.border = '1px solid #f5c6cb';
-                        coachingMessageDiv.innerHTML = '<strong>Error:</strong> Something went wrong. Please email us directly at jdenham@falcon.bentley.edu.';
-                        if (submitButton) {
-                            submitButton.disabled = false;
-                            submitButton.textContent = 'Send Inquiry';
-                        }
-                    });
-                });
-            }
-
-        });
-    </script>
 </body>
 </html>
 
