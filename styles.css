@@ -65,24 +65,24 @@ body {
 }
 
 .logo-top {
-    font-size: 1rem;
-    font-weight: 500;
-    color: #0052CC;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #003d99;
     text-transform: lowercase;
-    letter-spacing: 0.3px;
-    margin-bottom: -3px;
-    position: relative;
-    left: 3px;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
     align-self: flex-start;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.2;
 }
 
 .logo-bottom {
-    font-size: 2rem;
-    font-weight: 700;
-    color: #0052CC;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    text-shadow: 0 1px 2px rgba(0, 82, 204, 0.15);
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: #4A90E2;
+    text-transform: lowercase;
+    letter-spacing: 0.3px;
+    line-height: 1.2;
 }
 
 .nav-menu {
