@@ -20,7 +20,7 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     color: var(--text-dark);
-    background-color: #000000;
+    background-color: var(--bg-white);
 }
 
 /* Navigation */
@@ -749,8 +749,8 @@ body {
 
 /* Footer */
 footer {
-    background-color: var(--text-dark);
-    color: white;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
     padding: 2rem;
     text-align: center;
 }
