@@ -70,7 +70,7 @@ body {
     color: #003d99;
     text-transform: lowercase;
     letter-spacing: 0.5px;
-    margin-bottom: 2px;
+    margin-bottom: 4px;
     align-self: flex-start;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.2;
@@ -83,6 +83,11 @@ body {
     text-transform: lowercase;
     letter-spacing: 0.3px;
     line-height: 1.2;
+    display: inline-block;
+    padding: 0.25rem 0.6rem;
+    border: 2px solid #4A90E2;
+    border-radius: 6px;
+    margin-top: 2px;
 }
 
 .nav-menu {
