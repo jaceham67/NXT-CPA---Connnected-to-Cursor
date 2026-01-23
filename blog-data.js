@@ -3,6 +3,16 @@
 
 const blogPosts = [
     {
+        id: 2,
+        title: "How to Own the Big Four Timeline",
+        category: "sophomore",
+        date: "2026-01-25",
+        excerpt: "Understanding the early recruiting timelines for Big Four accounting internships. Learn when to apply for audit, tax, and advisory positions to secure your spot before it's too late.",
+        readTime: "6 min read",
+        link: "blog/big-four-timeline.html",
+        author: "Jackson Denham"
+    },
+    {
         id: 1,
         title: "The Freshman Internship: Navigating the Search and Ignoring the Skeptics",
         category: "freshman",
