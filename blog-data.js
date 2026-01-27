@@ -3,6 +3,33 @@
 
 const blogPosts = [
     {
+        id: 3,
+        title: "From Nerves to Next-Level: Mastering the Virtual Interview",
+        category: "freshman",
+        date: "2026-01-28",
+        excerpt: "Learn how to master virtual interviews for accounting internships. Tips and tricks to help you skip the learning curve and head straight to the offer.",
+        readTime: "10 min read",
+        link: "blog/mastering-virtual-interview.html"
+    },
+    {
+        id: 4,
+        title: "From Nerves to Next-Level: Mastering the Virtual Interview",
+        category: "sophomore",
+        date: "2026-01-28",
+        excerpt: "Learn how to master virtual interviews for accounting internships. Tips and tricks to help you skip the learning curve and head straight to the offer.",
+        readTime: "10 min read",
+        link: "blog/mastering-virtual-interview.html"
+    },
+    {
+        id: 5,
+        title: "From Nerves to Next-Level: Mastering the Virtual Interview",
+        category: "junior",
+        date: "2026-01-28",
+        excerpt: "Learn how to master virtual interviews for accounting internships. Tips and tricks to help you skip the learning curve and head straight to the offer.",
+        readTime: "10 min read",
+        link: "blog/mastering-virtual-interview.html"
+    },
+    {
         id: 2,
         title: "How to Own the Big Four Timeline",
         category: "sophomore",
