@@ -9,7 +9,8 @@ const blogPosts = [
         date: "2026-01-28",
         excerpt: "Learn how to master virtual interviews for accounting internships. Tips and tricks to help you skip the learning curve and head straight to the offer.",
         readTime: "10 min read",
-        link: "blog/mastering-virtual-interview.html"
+        link: "blog/mastering-virtual-interview.html",
+        author: "Jackson Denham"
     },
     {
         id: 4,
@@ -18,7 +19,8 @@ const blogPosts = [
         date: "2026-01-28",
         excerpt: "Learn how to master virtual interviews for accounting internships. Tips and tricks to help you skip the learning curve and head straight to the offer.",
         readTime: "10 min read",
-        link: "blog/mastering-virtual-interview.html"
+        link: "blog/mastering-virtual-interview.html",
+        author: "Jackson Denham"
     },
     {
         id: 5,
@@ -27,7 +29,8 @@ const blogPosts = [
         date: "2026-01-28",
         excerpt: "Learn how to master virtual interviews for accounting internships. Tips and tricks to help you skip the learning curve and head straight to the offer.",
         readTime: "10 min read",
-        link: "blog/mastering-virtual-interview.html"
+        link: "blog/mastering-virtual-interview.html",
+        author: "Jackson Denham"
     },
     {
         id: 2,
@@ -62,9 +65,24 @@ function getBlogsByCategory(category) {
 }
 
 // Helper function to get recent blog posts (for homepage)
+// Deduplicates by title/link to avoid showing the same post multiple times
 function getRecentBlogs(limit = 3) {
-    return blogPosts
-        .sort((a, b) => new Date(b.date) - new Date(a.date))
-        .slice(0, limit);
+    const seen = new Set();
+    const uniquePosts = [];
+    
+    // Sort by date first
+    const sortedPosts = blogPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
+    
+    // Filter out duplicates based on title (or link if title is same)
+    for (const post of sortedPosts) {
+        const key = post.link || post.title;
+        if (!seen.has(key)) {
+            seen.add(key);
+            uniquePosts.push(post);
+            if (uniquePosts.length >= limit) break;
+        }
+    }
+    
+    return uniquePosts;
 }
 
