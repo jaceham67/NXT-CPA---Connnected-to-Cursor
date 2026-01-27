@@ -30,7 +30,7 @@ body {
     position: sticky;
     top: 0;
     z-index: 1000;
-    padding: 0.15rem 0;
+    padding: 0.5rem 0;
     transition: background-color 0.3s ease;
 }
 
@@ -38,24 +38,23 @@ body {
 .nav-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0.25rem 2rem;
+    padding: 0.5rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    min-height: auto;
+    gap: 2rem;
 }
 
 .logo {
     display: flex;
     align-items: center;
+    flex-shrink: 0;
 }
 
 .logo a {
     text-decoration: none;
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
+    align-items: center;
 }
 
 .logo img {
@@ -106,7 +105,10 @@ body {
 .nav-menu {
     display: flex;
     list-style: none;
-    gap: 2rem;
+    gap: 1.5rem;
+    align-items: center;
+    margin: 0;
+    padding: 0;
 }
 
 .nav-item {
@@ -120,10 +122,11 @@ body {
     font-size: 0.95rem;
     transition: color 0.3s ease;
     position: relative;
-    padding: 0.5rem 0;
+    padding: 0.5rem 0.75rem;
     display: flex;
     align-items: center;
     gap: 0.3rem;
+    white-space: nowrap;
 }
 
 .nav-link:hover {
