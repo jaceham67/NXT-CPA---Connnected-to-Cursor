@@ -863,10 +863,20 @@ footer p {
         gap: 2rem;
     }
 
-    .firm-logo {
-        font-size: 1rem;
+    .firm-logo-item {
         padding: 0.75rem 1.5rem;
         min-width: 120px;
+        height: 70px;
+    }
+
+    .firm-logo-item img {
+        max-height: 50px;
+        max-width: 120px;
+    }
+
+    .firm-logo-item span {
+        font-size: 1rem;
+        padding: 0.4rem 0.8rem;
     }
 
     .hero-content p {
@@ -945,10 +955,20 @@ footer p {
         gap: 1.5rem;
     }
 
-    .firm-logo {
-        font-size: 0.9rem;
+    .firm-logo-item {
         padding: 0.5rem 1rem;
         min-width: 100px;
+        height: 60px;
+    }
+
+    .firm-logo-item img {
+        max-height: 40px;
+        max-width: 100px;
+    }
+
+    .firm-logo-item span {
+        font-size: 0.9rem;
+        padding: 0.3rem 0.6rem;
     }
 }
 
@@ -1153,26 +1173,46 @@ section {
     width: fit-content;
 }
 
-.firm-logo {
+.firm-logo-item {
     flex-shrink: 0;
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: var(--text-dark);
     padding: 1rem 2rem;
     white-space: nowrap;
     opacity: 0.7;
-    transition: opacity 0.3s ease;
-    border-radius: 8px;
-    background-color: var(--bg-light);
+    transition: opacity 0.3s ease, transform 0.3s ease;
     display: flex;
     align-items: center;
     justify-content: center;
     min-width: 150px;
+    height: 80px;
 }
 
-.firm-logo:hover {
+.firm-logo-item img {
+    max-height: 60px;
+    max-width: 150px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    filter: grayscale(100%);
+    opacity: 0.6;
+    transition: opacity 0.3s ease, filter 0.3s ease;
+}
+
+.firm-logo-item span {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    background-color: var(--bg-light);
+}
+
+.firm-logo-item:hover {
     opacity: 1;
-    background-color: #e8f0fe;
+}
+
+.firm-logo-item:hover img {
+    opacity: 1;
+    filter: grayscale(0%);
 }
 
 @keyframes scroll-horizontal {
