@@ -4,6 +4,11 @@
     box-sizing: border-box;
 }
 
+html {
+    overflow-x: hidden;
+    max-width: 100%;
+}
+
 :root {
     --primary-color: #0052CC;
     --secondary-color: #0066FF;
@@ -21,6 +26,26 @@ body {
     line-height: 1.6;
     color: var(--text-dark);
     background-color: var(--bg-white);
+    overflow-x: hidden;
+    max-width: 100vw;
+    width: 100%;
+}
+
+img, video, iframe, embed, object {
+    max-width: 100%;
+    height: auto;
+}
+
+table {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    display: block;
+}
+
+pre, code {
+    max-width: 100%;
+    overflow-x: auto;
 }
 
 /* Navigation */
@@ -43,6 +68,8 @@ body {
     justify-content: space-between;
     align-items: center;
     gap: 2rem;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .logo {
@@ -228,6 +255,9 @@ body {
     text-align: center;
     position: relative;
     overflow: hidden;
+    width: 100%;
+    max-width: 100vw;
+    box-sizing: border-box;
 }
 
 .hero::before {
@@ -309,6 +339,9 @@ body {
 /* Content Sections */
 .content-section {
     padding: 5rem 2rem;
+    width: 100%;
+    max-width: 100vw;
+    box-sizing: border-box;
 }
 
 .content-section.alt-bg {
@@ -318,6 +351,9 @@ body {
 .container {
     max-width: 1200px;
     margin: 0 auto;
+    width: 100%;
+    padding: 0 1rem;
+    box-sizing: border-box;
 }
 
 .content-section h2 {
@@ -772,11 +808,28 @@ body {
 }
 
 /* Footer */
+main {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+
+header {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+
 footer {
     background-color: var(--bg-light);
     color: var(--text-dark);
     padding: 2rem;
     text-align: center;
+    width: 100%;
+    max-width: 100vw;
+    box-sizing: border-box;
 }
 
 footer p {
@@ -999,6 +1052,9 @@ footer p {
     position: relative;
     max-width: 1200px;
     margin: 0 auto;
+    width: 100%;
+    padding: 0 1rem;
+    box-sizing: border-box;
 }
 
 .blog-carousel-container {
@@ -1011,6 +1067,8 @@ footer p {
     padding: 1rem 0;
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none; /* IE and Edge */
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .blog-carousel-container::-webkit-scrollbar {
