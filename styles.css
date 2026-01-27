@@ -45,6 +45,11 @@ body {
     min-height: auto;
 }
 
+.logo {
+    display: flex;
+    align-items: center;
+}
+
 .logo a {
     text-decoration: none;
     display: flex;
