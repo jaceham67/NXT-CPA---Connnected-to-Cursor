@@ -77,11 +77,14 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Cards with fade-in and stagger
+        // Cards with fade-in and stagger (exclude dropdown menus)
         document.querySelectorAll('.job-card, .blog-card, .internship-card, .card').forEach((card, index) => {
-            card.classList.add('scroll-fade-in');
-            card.classList.add(`delay-${Math.min(index % 4, 3)}`);
-            scrollObserver.observe(card);
+            // Don't animate dropdown menu items
+            if (!card.closest('.dropdown-menu')) {
+                card.classList.add('scroll-fade-in');
+                card.classList.add(`delay-${Math.min(index % 4, 3)}`);
+                scrollObserver.observe(card);
+            }
         });
 
         // Grid items with staggered animations
