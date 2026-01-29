@@ -196,8 +196,6 @@ function createBlogCard(blog) {
         <p class="blog-card-excerpt">${blog.excerpt}</p>
         <div class="blog-card-meta">
             <span>${formatBlogDate(blog.date)}</span>
-            ${blog.readTime ? `<span>${blog.readTime}</span>` : ''}
-            ${blog.author ? `<span>By ${blog.author}</span>` : ''}
         </div>
     `;
 
