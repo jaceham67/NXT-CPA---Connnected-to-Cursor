@@ -43,28 +43,102 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Add fade-in animation on scroll
+    // Enhanced scroll animations with Intersection Observer
     const observerOptions = {
         threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
+        rootMargin: '0px 0px -100px 0px'
     };
 
-    const observer = new IntersectionObserver((entries) => {
+    const scrollObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
+                entry.target.classList.add('animated');
+                // Stop observing once animated
+                scrollObserver.unobserve(entry.target);
             }
         });
     }, observerOptions);
 
-    const animatedElements = document.querySelectorAll('.card, .job-card, .internship-card');
-    animatedElements.forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(20px)';
-        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(el);
-    });
+    // Apply animations to various elements
+    function initScrollAnimations() {
+        // Sections with fade-in
+        document.querySelectorAll('.content-section, .hero').forEach((section, index) => {
+            section.classList.add('scroll-fade-in');
+            if (index > 0) section.classList.add(`delay-${Math.min(index % 4, 3)}`);
+            scrollObserver.observe(section);
+        });
+
+        // Headings with slide-up
+        document.querySelectorAll('h1, h2').forEach((heading, index) => {
+            if (!heading.closest('.hero')) { // Don't animate hero headings twice
+                heading.classList.add('scroll-slide-up');
+                if (index > 0) heading.classList.add(`delay-${Math.min(index % 3, 2)}`);
+                scrollObserver.observe(heading);
+            }
+        });
+
+        // Cards with fade-in and stagger
+        document.querySelectorAll('.job-card, .blog-card, .internship-card, .card').forEach((card, index) => {
+            card.classList.add('scroll-fade-in');
+            card.classList.add(`delay-${Math.min(index % 4, 3)}`);
+            scrollObserver.observe(card);
+        });
+
+        // Grid items with staggered animations
+        document.querySelectorAll('.jobs-grid > *, .content-grid > *').forEach((item, index) => {
+            item.classList.add('scroll-fade-in');
+            item.classList.add(`delay-${Math.min(index % 4, 3)}`);
+            scrollObserver.observe(item);
+        });
+
+        // Lists with slide-up
+        document.querySelectorAll('.internship-info ul, .internship-info ol').forEach((list, index) => {
+            list.classList.add('scroll-slide-up');
+            if (index > 0) list.classList.add(`delay-${Math.min(index % 3, 2)}`);
+            scrollObserver.observe(list);
+        });
+
+        // Paragraphs with fade-in
+        document.querySelectorAll('.intro-text, .job-description').forEach((para, index) => {
+            para.classList.add('scroll-fade-in');
+            if (index > 0) para.classList.add(`delay-${Math.min(index % 3, 2)}`);
+            scrollObserver.observe(para);
+        });
+
+        // Tables with scale-in
+        document.querySelectorAll('table').forEach((table) => {
+            table.classList.add('scroll-scale-in');
+            scrollObserver.observe(table);
+        });
+
+        // Buttons with fade-in
+        document.querySelectorAll('.cta-button, .cta-button-coaching').forEach((button, index) => {
+            button.classList.add('scroll-fade-in');
+            if (index > 0) button.classList.add(`delay-${Math.min(index % 2, 1)}`);
+            scrollObserver.observe(button);
+        });
+    }
+
+    // Initialize scroll animations
+    initScrollAnimations();
+
+    // Check for elements already in viewport on page load
+    function checkInitialViewport() {
+        const animatedElements = document.querySelectorAll('.scroll-fade-in, .scroll-slide-up, .scroll-slide-left, .scroll-slide-right, .scroll-scale-in');
+        animatedElements.forEach(el => {
+            const rect = el.getBoundingClientRect();
+            const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+            if (isVisible) {
+                // Small delay to ensure smooth animation
+                setTimeout(() => {
+                    el.classList.add('animated');
+                }, 100);
+            }
+        });
+    }
+
+    // Run check after a short delay to ensure DOM is ready
+    setTimeout(checkInitialViewport, 200);
 
     // Tab functionality
     const tabButtons = document.querySelectorAll('.tab-button');
