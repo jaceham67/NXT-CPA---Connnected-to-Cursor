@@ -1,4 +1,4 @@
-# Blog Post Guide for NXT CPA
+# Blog Post Guide for Accrual Careers
 
 ## How to Add a New Blog Post
 
