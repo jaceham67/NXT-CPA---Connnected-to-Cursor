@@ -57,6 +57,7 @@ pre, code {
     z-index: 1000;
     padding: 0.5rem 0;
     transition: background-color 0.3s ease;
+    overflow: visible;
 }
 
 
@@ -70,12 +71,16 @@ pre, code {
     gap: 2rem;
     width: 100%;
     box-sizing: border-box;
+    overflow: visible;
+    position: relative;
 }
 
 .logo {
     display: flex;
     align-items: center;
     flex-shrink: 0;
+    position: relative;
+    z-index: 1;
 }
 
 .logo a {
@@ -136,10 +141,13 @@ pre, code {
     align-items: center;
     margin: 0;
     padding: 0;
+    overflow: visible;
+    position: relative;
 }
 
 .nav-item {
     position: relative;
+    z-index: 1001;
 }
 
 .nav-link {
@@ -202,7 +210,7 @@ pre, code {
     visibility: hidden;
     transform: translateY(-10px);
     transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
-    z-index: 1000;
+    z-index: 1002;
 }
 
 .nav-item.dropdown:hover .dropdown-menu,
