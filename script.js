@@ -27,13 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
             let isFixed = false;
             
             dropdown.addEventListener('mouseenter', function() {
-                // Reset any inline styles first to let CSS work
-                if (!isFixed) {
-                    dropdownMenu.style.position = '';
-                    dropdownMenu.style.top = '';
-                    dropdownMenu.style.left = '';
-                    dropdownMenu.style.width = '';
-                }
+                // Ensure dropdown is visible (CSS handles this, but ensure it's not blocked)
+                dropdownMenu.style.display = 'block';
                 
                 // Check if we need fixed positioning after a brief delay
                 setTimeout(() => {
@@ -48,6 +43,11 @@ document.addEventListener('DOMContentLoaded', () => {
                         dropdownMenu.style.width = `${Math.max(250, rect.width)}px`;
                         isFixed = true;
                     } else {
+                        // Reset to CSS positioning
+                        dropdownMenu.style.position = '';
+                        dropdownMenu.style.top = '';
+                        dropdownMenu.style.left = '';
+                        dropdownMenu.style.width = '';
                         isFixed = false;
                     }
                 }, 10);
@@ -60,18 +60,25 @@ document.addEventListener('DOMContentLoaded', () => {
                         dropdownMenu.style.top = '';
                         dropdownMenu.style.left = '';
                         dropdownMenu.style.width = '';
+                        dropdownMenu.style.display = '';
                         isFixed = false;
                     }
                 }, 100);
             });
             
+            dropdownMenu.addEventListener('mouseenter', function() {
+                // Keep menu visible when hovering over it
+                this.style.display = 'block';
+            });
+            
             dropdownMenu.addEventListener('mouseleave', function() {
                 setTimeout(() => {
-                    if (!dropdown.matches(':hover') && !dropdownMenu.matches(':hover')) {
-                        dropdownMenu.style.position = '';
-                        dropdownMenu.style.top = '';
-                        dropdownMenu.style.left = '';
-                        dropdownMenu.style.width = '';
+                    if (!dropdown.matches(':hover') && !this.matches(':hover')) {
+                        this.style.position = '';
+                        this.style.top = '';
+                        this.style.left = '';
+                        this.style.width = '';
+                        this.style.display = '';
                         isFixed = false;
                     }
                 }, 100);
