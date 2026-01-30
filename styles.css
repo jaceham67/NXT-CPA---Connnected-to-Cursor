@@ -61,8 +61,9 @@ pre, code {
     z-index: 1000;
     padding: 0.1rem 0;
     transition: background-color 0.3s ease;
-    overflow-x: hidden !important;
-    overflow-y: visible;
+    overflow: visible !important;
+    overflow-x: visible !important;
+    overflow-y: visible !important;
     width: 100% !important;
     max-width: 100% !important;
     box-sizing: border-box;
@@ -79,7 +80,9 @@ pre, code {
     gap: 2rem;
     width: 100%;
     box-sizing: border-box;
-    overflow: visible;
+    overflow: visible !important;
+    overflow-x: visible !important;
+    overflow-y: visible !important;
     position: relative;
 }
 
@@ -241,10 +244,12 @@ pre, code {
     overflow: visible !important;
     overflow-y: visible !important;
     overflow-x: visible !important;
-    display: block;
+    display: block !important;
     height: auto !important;
     clip: auto !important;
     clip-path: none !important;
+    contain: none !important;
+    will-change: transform;
 }
 
 .dropdown-menu > li {
