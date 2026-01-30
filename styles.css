@@ -66,7 +66,7 @@ pre, code {
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
     position: sticky;
     top: 0;
-    z-index: 10000;
+    z-index: 1000;
     padding: 0.1rem 0;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
     overflow: visible !important;
@@ -380,11 +380,6 @@ pre, code {
 @media (max-width: 768px) {
     .hero {
         background-attachment: scroll;
-        z-index: 0;
-    }
-    
-    .navbar {
-        z-index: 10000;
     }
 }
 
@@ -1066,7 +1061,7 @@ footer p {
         background-color: var(--bg-light);
     }
 
-    .dropdown-menu {
+    .nav-menu .dropdown-menu {
         position: static !important;
         opacity: 1 !important;
         visibility: visible !important;
@@ -1084,7 +1079,7 @@ footer p {
         border-top: 1px solid var(--border-color);
     }
     
-    .dropdown-menu.show {
+    .nav-menu .dropdown-menu.show {
         display: block !important;
     }
 
