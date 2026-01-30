@@ -61,7 +61,10 @@ pre, code {
     z-index: 1000;
     padding: 0.5rem 0;
     transition: background-color 0.3s ease;
-    overflow: visible;
+    overflow-x: hidden;
+    overflow-y: visible;
+    width: 100%;
+    max-width: 100%;
 }
 
 
@@ -156,11 +159,11 @@ pre, code {
 
 .nav-item.dropdown {
     position: relative;
-    z-index: 1001;
+    z-index: 10001;
 }
 
 .nav-item.dropdown:hover {
-    z-index: 1003;
+    z-index: 10001;
 }
 
 .nav-link {
@@ -226,7 +229,7 @@ pre, code {
     visibility: hidden;
     transform: translateY(-10px);
     transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
-    z-index: 1002;
+    z-index: 10000;
     max-height: none;
     overflow: visible;
     display: block;
@@ -331,6 +334,7 @@ pre, code {
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
+    z-index: 1;
 }
 
 .hero::before {
