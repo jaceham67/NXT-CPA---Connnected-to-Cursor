@@ -66,7 +66,7 @@ pre, code {
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
     position: sticky;
     top: 0;
-    z-index: 1000;
+    z-index: 9999;
     padding: 0.1rem 0;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
     overflow: visible !important;
@@ -173,7 +173,7 @@ pre, code {
 
 .nav-item {
     position: relative;
-    z-index: 1001;
+    z-index: 10000;
 }
 
 .nav-item.dropdown {
@@ -182,11 +182,11 @@ pre, code {
 }
 
 .nav-item.dropdown:hover {
-    z-index: 10001;
+    z-index: 10002;
 }
 
 .nav-item.dropdown:hover .dropdown-menu {
-    z-index: 10002;
+    z-index: 10003;
 }
 
 /* Bridge the gap between nav item and dropdown menu */
@@ -198,7 +198,8 @@ pre, code {
     width: 100%;
     height: 0.5rem;
     background: transparent;
-    z-index: 10001;
+    z-index: 10002;
+    pointer-events: none;
 }
 
 .nav-link {
@@ -264,7 +265,7 @@ pre, code {
     visibility: hidden;
     transform: translateY(-10px);
     transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
-    z-index: 10000;
+    z-index: 10003 !important;
     max-height: none !important;
     min-height: auto !important;
     overflow: visible !important;
@@ -277,7 +278,7 @@ pre, code {
     contain: none !important;
     will-change: transform;
     pointer-events: auto !important;
-    isolation: auto;
+    isolation: isolate;
     border: 1px solid rgba(0, 0, 0, 0.08);
 }
 

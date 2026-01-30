@@ -19,69 +19,69 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Position dropdown menus dynamically to avoid clipping by hero section
-    // Only apply fixed positioning when needed to prevent clipping
+    // Position dropdown menus using fixed positioning to ensure they appear above everything
     document.querySelectorAll('.nav-item.dropdown').forEach(dropdown => {
         const dropdownMenu = dropdown.querySelector('.dropdown-menu');
         if (dropdownMenu) {
-            let isFixed = false;
+            let isOpen = false;
             
             dropdown.addEventListener('mouseenter', function() {
-                // Ensure dropdown is visible (CSS handles this, but ensure it's not blocked)
+                isOpen = true;
+                // Ensure dropdown is visible
                 dropdownMenu.style.display = 'block';
                 
-                // Check if we need fixed positioning after a brief delay
+                // Use fixed positioning to ensure it's above everything
                 setTimeout(() => {
                     const rect = this.getBoundingClientRect();
-                    const menuRect = dropdownMenu.getBoundingClientRect();
-                    
-                    // Only use fixed if dropdown would be clipped
-                    if (menuRect.bottom > window.innerHeight || menuRect.top < 0) {
-                        dropdownMenu.style.top = `${rect.bottom}px`;
-                        dropdownMenu.style.left = `${rect.left}px`;
-                        dropdownMenu.style.position = 'fixed';
-                        dropdownMenu.style.width = `${Math.max(250, rect.width)}px`;
-                        isFixed = true;
-                    } else {
-                        // Reset to CSS positioning
-                        dropdownMenu.style.position = '';
-                        dropdownMenu.style.top = '';
-                        dropdownMenu.style.left = '';
-                        dropdownMenu.style.width = '';
-                        isFixed = false;
-                    }
-                }, 10);
+                    dropdownMenu.style.position = 'fixed';
+                    dropdownMenu.style.top = `${rect.bottom}px`;
+                    dropdownMenu.style.left = `${rect.left}px`;
+                    dropdownMenu.style.width = `${Math.max(250, rect.width)}px`;
+                    dropdownMenu.style.zIndex = '10003';
+                }, 0);
             });
             
             dropdown.addEventListener('mouseleave', function() {
                 setTimeout(() => {
                     if (!dropdown.matches(':hover') && !dropdownMenu.matches(':hover')) {
+                        isOpen = false;
                         dropdownMenu.style.position = '';
                         dropdownMenu.style.top = '';
                         dropdownMenu.style.left = '';
                         dropdownMenu.style.width = '';
                         dropdownMenu.style.display = '';
-                        isFixed = false;
+                        dropdownMenu.style.zIndex = '';
                     }
                 }, 100);
             });
             
             dropdownMenu.addEventListener('mouseenter', function() {
                 // Keep menu visible when hovering over it
+                isOpen = true;
                 this.style.display = 'block';
             });
             
             dropdownMenu.addEventListener('mouseleave', function() {
                 setTimeout(() => {
                     if (!dropdown.matches(':hover') && !this.matches(':hover')) {
+                        isOpen = false;
                         this.style.position = '';
                         this.style.top = '';
                         this.style.left = '';
                         this.style.width = '';
                         this.style.display = '';
-                        isFixed = false;
+                        this.style.zIndex = '';
                     }
                 }, 100);
+            });
+            
+            // Update position on scroll
+            window.addEventListener('scroll', () => {
+                if (isOpen && dropdown.matches(':hover')) {
+                    const rect = dropdown.getBoundingClientRect();
+                    dropdownMenu.style.top = `${rect.bottom}px`;
+                    dropdownMenu.style.left = `${rect.left}px`;
+                }
             });
         }
     });
