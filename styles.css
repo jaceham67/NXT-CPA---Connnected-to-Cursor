@@ -149,10 +149,13 @@ pre, code {
     align-items: flex-start;
     margin: 0;
     padding: 0;
-    overflow: visible;
+    overflow: visible !important;
+    overflow-x: visible !important;
+    overflow-y: visible !important;
     position: relative;
     width: auto;
     max-width: 100%;
+    height: auto;
 }
 
 .nav-item {
@@ -233,10 +236,15 @@ pre, code {
     transform: translateY(-10px);
     transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
     z-index: 99999 !important;
-    max-height: none;
+    max-height: none !important;
+    min-height: auto !important;
     overflow: visible !important;
+    overflow-y: visible !important;
+    overflow-x: visible !important;
     display: block;
-    height: auto;
+    height: auto !important;
+    clip: auto !important;
+    clip-path: none !important;
 }
 
 .dropdown-menu > li {
@@ -277,7 +285,7 @@ pre, code {
 }
 
 .dropdown-link {
-    display: block;
+    display: block !important;
     padding: 0.75rem 1.5rem;
     color: var(--text-dark);
     text-decoration: none;
@@ -288,6 +296,9 @@ pre, code {
     width: 100%;
     box-sizing: border-box;
     line-height: 1.4;
+    visibility: visible !important;
+    opacity: 1 !important;
+    height: auto !important;
 }
 
 .dropdown-menu li {
@@ -299,11 +310,13 @@ pre, code {
     white-space: normal;
     visibility: visible !important;
     opacity: 1 !important;
-    height: auto;
-    min-height: auto;
+    height: auto !important;
+    min-height: auto !important;
+    max-height: none !important;
     overflow: visible !important;
     clip: auto !important;
     clip-path: none !important;
+    position: relative;
 }
 
 .dropdown-link:hover {
