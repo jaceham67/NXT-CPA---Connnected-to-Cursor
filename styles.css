@@ -76,6 +76,7 @@ pre, code {
     max-width: 100% !important;
     box-sizing: border-box;
     backdrop-filter: blur(10px);
+    margin: 0;
 }
 
 
@@ -964,7 +965,7 @@ header {
     overflow-y: visible;
     box-sizing: border-box;
     position: relative;
-    z-index: 10000;
+    z-index: 1000;
 }
 
 footer {
@@ -1020,12 +1021,12 @@ footer p {
         text-align: left;
         transition: 0.3s;
         box-shadow: 0 10px 27px rgba(0, 0, 0, 0.15);
-        padding: 80px 0 0 0;
+        padding: 0;
         gap: 0;
         overflow-y: auto !important;
         overflow-x: hidden;
         -webkit-overflow-scrolling: touch;
-        z-index: 10001 !important;
+        z-index: 1001;
         list-style: none;
         margin: 0;
         align-items: stretch;
@@ -1033,6 +1034,16 @@ footer p {
 
     .nav-menu.active {
         left: 0;
+    }
+    
+    /* Add spacing at top for navbar */
+    .nav-menu.active::before {
+        content: '';
+        display: block;
+        height: 80px;
+        width: 100%;
+        flex-shrink: 0;
+        background-color: var(--bg-white);
     }
 
     .nav-menu li {
