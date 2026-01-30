@@ -447,6 +447,9 @@ pre, code {
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
+    position: relative;
+    z-index: 0;
+    overflow: visible;
 }
 
 .content-section.alt-bg {
@@ -1164,20 +1167,23 @@ footer p {
     width: 100%;
     padding: 0 1rem;
     box-sizing: border-box;
+    z-index: 0;
+    overflow: visible;
 }
 
 .blog-carousel-container {
     display: flex;
     gap: 2rem;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
+    overflow: visible;
+    overflow-x: visible;
+    overflow-y: visible;
+    scroll-snap-type: none;
+    scroll-behavior: auto;
     padding: 1rem 0;
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE and Edge */
     width: 100%;
     box-sizing: border-box;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .blog-carousel-container::-webkit-scrollbar {
