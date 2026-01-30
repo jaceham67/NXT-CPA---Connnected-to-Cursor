@@ -66,7 +66,7 @@ pre, code {
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
     position: sticky;
     top: 0;
-    z-index: 1000;
+    z-index: 10000;
     padding: 0.1rem 0;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
     overflow: visible !important;
@@ -380,6 +380,11 @@ pre, code {
 @media (max-width: 768px) {
     .hero {
         background-attachment: scroll;
+        z-index: 0;
+    }
+    
+    .navbar {
+        z-index: 10000;
     }
 }
 
@@ -964,7 +969,7 @@ header {
     overflow-y: visible;
     box-sizing: border-box;
     position: relative;
-    z-index: 1000;
+    z-index: 10000;
 }
 
 footer {
@@ -1012,20 +1017,20 @@ footer p {
     .nav-menu {
         position: fixed;
         left: -100%;
-        top: 70px;
+        top: 0;
         bottom: 0;
         flex-direction: column;
         background-color: var(--bg-white);
         width: 100%;
         text-align: left;
         transition: 0.3s;
-        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
-        padding: 0;
+        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.15);
+        padding: 80px 0 0 0;
         gap: 0;
         overflow-y: auto !important;
         overflow-x: hidden;
         -webkit-overflow-scrolling: touch;
-        z-index: 999;
+        z-index: 10001 !important;
         list-style: none;
         margin: 0;
         align-items: stretch;
@@ -1036,7 +1041,7 @@ footer p {
     }
 
     .nav-menu li {
-        margin: 0.5rem 0;
+        margin: 0;
         width: 100%;
         display: block;
     }
@@ -1048,10 +1053,17 @@ footer p {
     
     .nav-menu .nav-link {
         display: block;
-        padding: 1rem 1.5rem;
+        padding: 1.25rem 1.5rem;
         width: 100%;
         text-align: left;
         border-bottom: 1px solid var(--border-color);
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--text-dark);
+    }
+    
+    .nav-menu .nav-link:active {
+        background-color: var(--bg-light);
     }
 
     .dropdown-menu {
@@ -1062,13 +1074,14 @@ footer p {
         box-shadow: none;
         background-color: var(--bg-light);
         margin-top: 0;
-        margin-left: 1rem;
-        padding: 0.5rem 0;
-        border-radius: 5px;
-        width: calc(100% - 2rem);
+        margin-left: 0;
+        padding: 0;
+        border-radius: 0;
+        width: 100%;
         max-height: none !important;
-        display: none;
-        border-left: 3px solid var(--primary-color);
+        display: none !important;
+        border-left: none;
+        border-top: 1px solid var(--border-color);
     }
     
     .dropdown-menu.show {
@@ -1076,15 +1089,23 @@ footer p {
     }
 
     .dropdown-link {
-        padding: 0.75rem 1rem;
+        padding: 1rem 2rem;
         display: block !important;
         width: 100%;
         text-align: left;
         border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        font-size: 0.95rem;
+        font-weight: 400;
+        color: var(--text-light);
     }
     
     .dropdown-link:last-child {
         border-bottom: none;
+    }
+    
+    .dropdown-link:active {
+        background-color: rgba(0, 82, 204, 0.1);
+        color: var(--primary-color);
     }
     
     .dropdown-menu li {
