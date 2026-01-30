@@ -13,15 +13,15 @@
 
 ### 1. **Submit to Google Search Console** ⭐ MOST IMPORTANT
    - Go to: https://search.google.com/search-console
-   - Add property: `https://nxtcpa.com`
+   - Add property: `https://ledger-launch.com`
    - Verify ownership (DNS record or HTML file)
-   - Submit your sitemap: `https://nxtcpa.com/sitemap.xml`
+   - Submit your sitemap: `https://ledger-launch.com/sitemap.xml`
    - Request indexing for your homepage immediately
 
 ### 2. **Submit to Google Index** (Fast Track)
    - Go to: https://search.google.com/search-console
    - Use the URL Inspection tool
-   - Enter: `https://nxtcpa.com`
+   - Enter: `https://ledger-launch.com`
    - Click "Request Indexing"
    - This tells Google your site exists NOW
 
@@ -98,7 +98,7 @@
    
 2. Search regularly for:
    - "Ledger Launch"
-   - "nxtcpa.com"
+   - "ledger-launch.com"
    - "Ledger Launch"
 
 ## 💡 Pro Tips
@@ -110,7 +110,7 @@
 
 ## 🚨 Important Notes
 
-- Your domain is `nxtcpa.com` (no hyphen), but people may search "Ledger Launch" (with hyphen)
+- Your domain is `ledger-launch.com` (no hyphen), but people may search "Ledger Launch" (with hyphen)
 - The code changes I made will help, but Google indexing is the most critical step
 - Backlinks from reputable sites significantly boost your ranking
 - Social signals (shares, mentions) also help with SEO

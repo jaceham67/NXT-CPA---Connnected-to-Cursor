@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://nxtcpa.com/sitemap.xml
+Sitemap: https://ledger-launch.com/sitemap.xml
 
