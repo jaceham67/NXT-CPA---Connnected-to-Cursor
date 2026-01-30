@@ -6,7 +6,7 @@
 
 html {
     overflow-x: hidden;
-    overflow-y: auto;
+    overflow-y: scroll;
     max-width: 100%;
     height: 100%;
 }
@@ -29,10 +29,12 @@ body {
     color: var(--text-dark);
     background-color: var(--bg-white);
     overflow-x: hidden;
-    overflow-y: auto;
+    overflow-y: visible;
     width: 100%;
     margin: 0;
     padding: 0;
+    height: auto;
+    min-height: 100%;
 }
 
 img, video, iframe, embed, object {
@@ -347,7 +349,8 @@ pre, code {
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(135deg, rgba(0, 51, 102, 0.85) 0%, rgba(0, 64, 128, 0.85) 50%, rgba(0, 82, 204, 0.85) 100%);
+    background: linear-gradient(135deg, rgba(0, 51, 102, 0.85) 0%, rgba(0, 64, 128, 0.85) 50%, rgba(0, 82, 204, 0.85) 100%),
+                url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') center/cover;
     color: white;
     padding: 8rem 1.5rem;
     text-align: center;
