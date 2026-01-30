@@ -59,7 +59,7 @@ pre, code {
     position: sticky;
     top: 0;
     z-index: 1000;
-    padding: 0.5rem 0;
+    padding: 0.25rem 0;
     transition: background-color 0.3s ease;
     overflow-x: hidden !important;
     overflow-y: visible;
@@ -98,7 +98,7 @@ pre, code {
 }
 
 .logo img {
-    max-height: 320px;
+    max-height: 120px;
     width: auto;
     object-fit: contain;
     display: block;
