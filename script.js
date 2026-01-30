@@ -25,14 +25,31 @@ document.addEventListener('DOMContentLoaded', () => {
         if (dropdownMenu) {
             dropdown.addEventListener('mouseenter', function() {
                 const rect = this.getBoundingClientRect();
-                dropdownMenu.style.top = `${rect.bottom + window.scrollY}px`;
-                dropdownMenu.style.left = `${rect.left + window.scrollX}px`;
+                dropdownMenu.style.top = `${rect.bottom}px`;
+                dropdownMenu.style.left = `${rect.left}px`;
                 dropdownMenu.style.position = 'fixed';
+                dropdownMenu.style.width = `${Math.max(250, rect.width)}px`;
             });
             dropdown.addEventListener('mouseleave', function() {
-                dropdownMenu.style.position = '';
-                dropdownMenu.style.top = '';
-                dropdownMenu.style.left = '';
+                // Small delay to allow moving to dropdown
+                setTimeout(() => {
+                    if (!dropdown.matches(':hover') && !dropdownMenu.matches(':hover')) {
+                        dropdownMenu.style.position = '';
+                        dropdownMenu.style.top = '';
+                        dropdownMenu.style.left = '';
+                        dropdownMenu.style.width = '';
+                    }
+                }, 100);
+            });
+            dropdownMenu.addEventListener('mouseleave', function() {
+                setTimeout(() => {
+                    if (!dropdown.matches(':hover') && !dropdownMenu.matches(':hover')) {
+                        dropdownMenu.style.position = '';
+                        dropdownMenu.style.top = '';
+                        dropdownMenu.style.left = '';
+                        dropdownMenu.style.width = '';
+                    }
+                }, 100);
             });
         }
     });
