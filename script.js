@@ -10,11 +10,15 @@ document.addEventListener('DOMContentLoaded', () => {
             navMenu.classList.toggle('active');
             hamburger.classList.toggle('active');
             
-            // Prevent body scroll when menu is open
+            // Prevent body scroll when menu is open (but allow html to scroll)
             if (!isActive) {
                 document.body.style.overflow = 'hidden';
+                document.body.style.position = 'fixed';
+                document.body.style.width = '100%';
             } else {
                 document.body.style.overflow = '';
+                document.body.style.position = '';
+                document.body.style.width = '';
             }
         });
     }
