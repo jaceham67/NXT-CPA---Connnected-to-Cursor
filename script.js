@@ -20,27 +20,51 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Position dropdown menus dynamically to avoid clipping by hero section
+    // Only apply fixed positioning when needed to prevent clipping
     document.querySelectorAll('.nav-item.dropdown').forEach(dropdown => {
         const dropdownMenu = dropdown.querySelector('.dropdown-menu');
         if (dropdownMenu) {
+            let isFixed = false;
+            
             dropdown.addEventListener('mouseenter', function() {
-                const rect = this.getBoundingClientRect();
-                dropdownMenu.style.top = `${rect.bottom}px`;
-                dropdownMenu.style.left = `${rect.left}px`;
-                dropdownMenu.style.position = 'fixed';
-                dropdownMenu.style.width = `${Math.max(250, rect.width)}px`;
+                // Reset any inline styles first to let CSS work
+                if (!isFixed) {
+                    dropdownMenu.style.position = '';
+                    dropdownMenu.style.top = '';
+                    dropdownMenu.style.left = '';
+                    dropdownMenu.style.width = '';
+                }
+                
+                // Check if we need fixed positioning after a brief delay
+                setTimeout(() => {
+                    const rect = this.getBoundingClientRect();
+                    const menuRect = dropdownMenu.getBoundingClientRect();
+                    
+                    // Only use fixed if dropdown would be clipped
+                    if (menuRect.bottom > window.innerHeight || menuRect.top < 0) {
+                        dropdownMenu.style.top = `${rect.bottom}px`;
+                        dropdownMenu.style.left = `${rect.left}px`;
+                        dropdownMenu.style.position = 'fixed';
+                        dropdownMenu.style.width = `${Math.max(250, rect.width)}px`;
+                        isFixed = true;
+                    } else {
+                        isFixed = false;
+                    }
+                }, 10);
             });
+            
             dropdown.addEventListener('mouseleave', function() {
-                // Small delay to allow moving to dropdown
                 setTimeout(() => {
                     if (!dropdown.matches(':hover') && !dropdownMenu.matches(':hover')) {
                         dropdownMenu.style.position = '';
                         dropdownMenu.style.top = '';
                         dropdownMenu.style.left = '';
                         dropdownMenu.style.width = '';
+                        isFixed = false;
                     }
                 }, 100);
             });
+            
             dropdownMenu.addEventListener('mouseleave', function() {
                 setTimeout(() => {
                     if (!dropdown.matches(':hover') && !dropdownMenu.matches(':hover')) {
@@ -48,6 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         dropdownMenu.style.top = '';
                         dropdownMenu.style.left = '';
                         dropdownMenu.style.width = '';
+                        isFixed = false;
                     }
                 }, 100);
             });

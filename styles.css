@@ -185,6 +185,10 @@ pre, code {
     z-index: 10001;
 }
 
+.nav-item.dropdown:hover .dropdown-menu {
+    z-index: 10002;
+}
+
 .nav-link {
     text-decoration: none;
     color: var(--text-dark);
@@ -370,7 +374,7 @@ pre, code {
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
-    z-index: 0;
+    z-index: -1;
     background-attachment: fixed;
 }
 
