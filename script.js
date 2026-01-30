@@ -10,15 +10,11 @@ document.addEventListener('DOMContentLoaded', () => {
             navMenu.classList.toggle('active');
             hamburger.classList.toggle('active');
             
-            // Prevent body scroll when menu is open (but allow html to scroll)
+            // Prevent body scroll when menu is open
             if (!isActive) {
                 document.body.style.overflow = 'hidden';
-                document.body.style.position = 'fixed';
-                document.body.style.width = '100%';
             } else {
                 document.body.style.overflow = '';
-                document.body.style.position = '';
-                document.body.style.width = '';
             }
         });
     }
@@ -58,72 +54,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Mobile dropdown toggle - allow clicking nav links to expand dropdowns on mobile
-    function isMobile() {
-        return window.innerWidth <= 768;
-    }
-    
-    function setupMobileDropdowns() {
-        document.querySelectorAll('.nav-item.dropdown > .nav-link').forEach(link => {
-            const dropdown = link.parentElement.querySelector('.dropdown-menu');
-            if (dropdown) {
-                // Remove any existing click handlers by using a flag
-                if (!link.dataset.mobileHandler) {
-                    link.dataset.mobileHandler = 'true';
-                    link.addEventListener('click', function(e) {
-                        if (isMobile()) {
-                            e.preventDefault();
-                            e.stopPropagation();
-                            // Toggle the dropdown
-                            const isExpanded = dropdown.classList.contains('show') || dropdown.style.display === 'block';
-                            // Close all other dropdowns
-                            document.querySelectorAll('.dropdown-menu').forEach(menu => {
-                                menu.style.display = 'none';
-                                menu.classList.remove('show');
-                            });
-                            // Toggle current dropdown
-                            if (isExpanded) {
-                                dropdown.style.display = 'none';
-                                dropdown.classList.remove('show');
-                            } else {
-                                dropdown.style.display = 'block';
-                                dropdown.classList.add('show');
-                            }
-                        }
-                    });
-                }
-            }
-        });
-    }
-    
-    // Setup mobile dropdowns on load
-    setupMobileDropdowns();
-    
-    // Re-setup on resize
-    let resizeTimer;
-    window.addEventListener('resize', () => {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(() => {
-            // Reset handlers on resize
-            document.querySelectorAll('.nav-item.dropdown > .nav-link').forEach(link => {
-                delete link.dataset.mobileHandler;
-            });
-            setupMobileDropdowns();
-        }, 250);
-    });
-
     // Close mobile menu when clicking on a link
     document.querySelectorAll('.nav-link, .dropdown-link').forEach(link => {
         link.addEventListener('click', () => {
-            // Only close menu if clicking a dropdown link (not the parent nav-link)
-            if (link.classList.contains('dropdown-link')) {
-                if (navMenu) navMenu.classList.remove('active');
-                if (hamburger) hamburger.classList.remove('active');
-                // Restore body scroll when menu closes
-                document.body.style.overflow = '';
-                document.body.style.position = '';
-                document.body.style.width = '';
-            }
+            if (navMenu) navMenu.classList.remove('active');
+            if (hamburger) hamburger.classList.remove('active');
+            // Restore body scroll when menu closes
+            document.body.style.overflow = '';
         });
     });
 
