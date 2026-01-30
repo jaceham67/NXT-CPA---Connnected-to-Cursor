@@ -98,7 +98,7 @@ pre, code {
 }
 
 .logo img {
-    max-height: 160px;
+    max-height: 320px;
     width: auto;
     object-fit: contain;
     display: block;
