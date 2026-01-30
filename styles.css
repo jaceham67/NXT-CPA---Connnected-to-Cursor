@@ -1017,15 +1017,18 @@ footer p {
         flex-direction: column;
         background-color: var(--bg-white);
         width: 100%;
-        text-align: center;
+        text-align: left;
         transition: 0.3s;
         box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
-        padding: 2rem 0;
+        padding: 0;
         gap: 0;
-        overflow-y: auto;
+        overflow-y: auto !important;
         overflow-x: hidden;
         -webkit-overflow-scrolling: touch;
         z-index: 999;
+        list-style: none;
+        margin: 0;
+        align-items: stretch;
     }
 
     .nav-menu.active {
@@ -1033,25 +1036,62 @@ footer p {
     }
 
     .nav-menu li {
-        margin: 1rem 0;
+        margin: 0.5rem 0;
+        width: 100%;
+        display: block;
+    }
+    
+    .nav-menu .nav-item {
+        width: 100%;
+        display: block;
+    }
+    
+    .nav-menu .nav-link {
+        display: block;
+        padding: 1rem 1.5rem;
+        width: 100%;
+        text-align: left;
+        border-bottom: 1px solid var(--border-color);
     }
 
     .dropdown-menu {
-        position: static;
-        opacity: 1;
-        visibility: visible;
-        transform: none;
+        position: static !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
         box-shadow: none;
         background-color: var(--bg-light);
-        margin-top: 0.5rem;
+        margin-top: 0;
+        margin-left: 1rem;
         padding: 0.5rem 0;
         border-radius: 5px;
-        width: 100%;
-        max-height: none;
+        width: calc(100% - 2rem);
+        max-height: none !important;
+        display: none;
+        border-left: 3px solid var(--primary-color);
+    }
+    
+    .dropdown-menu.show {
+        display: block !important;
     }
 
     .dropdown-link {
         padding: 0.75rem 1rem;
+        display: block !important;
+        width: 100%;
+        text-align: left;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+    
+    .dropdown-link:last-child {
+        border-bottom: none;
+    }
+    
+    .dropdown-menu li {
+        display: block !important;
+        width: 100%;
+        margin: 0;
+        padding: 0;
     }
 
     .dropdown-arrow {
