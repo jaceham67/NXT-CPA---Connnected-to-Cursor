@@ -1,4 +1,4 @@
-# Blog Post Guide for Accrual Careers
+# Blog Post Guide for Ledger Launch
 
 ## How to Add a New Blog Post
 

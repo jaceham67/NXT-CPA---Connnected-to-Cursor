@@ -1,13 +1,13 @@
-# SEO Guide for Accrual Careers - Getting Ranked #1 for "Accrual Careers"
+# SEO Guide for Ledger Launch - Getting Ranked #1 for "Ledger Launch"
 
 ## ✅ What I've Already Done (Code Changes)
 
-1. **Optimized Title Tag** - Changed to "Accrual Careers | Accrual Careers | Accounting Internship Guide for Students"
-2. **Enhanced Meta Description** - Added "Accrual Careers" multiple times naturally
-3. **Updated Keywords** - Added "Accrual Careers" and "Accrual Careers" to keywords
+1. **Optimized Title Tag** - Changed to "Ledger Launch | Ledger Launch | Accounting Internship Guide for Students"
+2. **Enhanced Meta Description** - Added "Ledger Launch" multiple times naturally
+3. **Updated Keywords** - Added "Ledger Launch" and "Ledger Launch" to keywords
 4. **Added Canonical URL** - Helps prevent duplicate content issues
 5. **Structured Data (Schema.org)** - Added JSON-LD markup to help Google understand your site
-6. **Updated H1 Tag** - Changed to "Accrual Careers - Land Your Dream Accounting Internship"
+6. **Updated H1 Tag** - Changed to "Ledger Launch - Land Your Dream Accounting Internship"
 
 ## 🎯 Critical Steps You Must Take (Outside of Code)
 
@@ -34,21 +34,21 @@
    - Reach out to accounting blogs for mentions
    - Get listed on accounting education resource pages
 
-### 4. **Create More Content with "Accrual Careers"**
-   - Add "Accrual Careers" naturally throughout your pages
-   - Create blog posts or resource pages mentioning "Accrual Careers"
+### 4. **Create More Content with "Ledger Launch"**
+   - Add "Ledger Launch" naturally throughout your pages
+   - Create blog posts or resource pages mentioning "Ledger Launch"
    - Add it in footer text
    - Include in alt text for images (if you add images later)
 
 ### 5. **Social Media Presence**
-   - Create profiles with exact name "Accrual Careers"
-   - LinkedIn company page: "Accrual Careers"
+   - Create profiles with exact name "Ledger Launch"
+   - LinkedIn company page: "Ledger Launch"
    - Twitter/X handle: @NXTCPA
    - Add links from social media to your website
 
 ### 6. **Local SEO** (If Applicable)
    - If you have a physical location, create a Google Business Profile
-   - Use "Accrual Careers" as your business name
+   - Use "Ledger Launch" as your business name
 
 ### 7. **Content Freshness**
    - Update your site regularly with new content
@@ -75,9 +75,9 @@
 - [ ] Submit site to Google Search Console
 - [ ] Request indexing for homepage
 - [ ] Submit sitemap.xml to Google Search Console
-- [ ] Create LinkedIn page for "Accrual Careers"
+- [ ] Create LinkedIn page for "Ledger Launch"
 - [ ] Share website on social media
-- [ ] Add "Accrual Careers" to your email signature with link
+- [ ] Add "Ledger Launch" to your email signature with link
 - [ ] Reach out to accounting professors/students to share
 - [ ] Get listed on at least 5 relevant directories
 - [ ] Create at least 3 backlinks from other sites
@@ -86,7 +86,7 @@
 
 - **Immediate (1-2 days)**: After submitting to Google Search Console and requesting indexing, you may appear in search results
 - **1-2 weeks**: Better ranking if you have backlinks and social presence
-- **1-3 months**: Strong ranking for "Accrual Careers" with consistent SEO efforts
+- **1-3 months**: Strong ranking for "Ledger Launch" with consistent SEO efforts
 - **3-6 months**: Potential #1 ranking with good backlinks and content
 
 ## 🔍 Monitor Your Progress
@@ -97,20 +97,20 @@
    - How many clicks you get from search
    
 2. Search regularly for:
-   - "Accrual Careers"
+   - "Ledger Launch"
    - "nxtcpa.com"
-   - "Accrual Careers"
+   - "Ledger Launch"
 
 ## 💡 Pro Tips
 
-1. **Consistency is Key**: Use "Accrual Careers" consistently across all platforms
+1. **Consistency is Key**: Use "Ledger Launch" consistently across all platforms
 2. **Be Patient**: SEO takes time - don't expect overnight results
 3. **Quality Over Quantity**: A few high-quality backlinks beat many spam links
 4. **Stay Active**: Regular updates signal to Google that your site is alive
 
 ## 🚨 Important Notes
 
-- Your domain is `nxtcpa.com` (no hyphen), but people may search "Accrual Careers" (with hyphen)
+- Your domain is `nxtcpa.com` (no hyphen), but people may search "Ledger Launch" (with hyphen)
 - The code changes I made will help, but Google indexing is the most critical step
 - Backlinks from reputable sites significantly boost your ranking
 - Social signals (shares, mentions) also help with SEO

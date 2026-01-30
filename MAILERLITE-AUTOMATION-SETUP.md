@@ -15,7 +15,7 @@ This requires two steps:
 2. Go to **Campaigns** → **Email Templates**
 3. Click **Create Email** → **Email**
 4. Design your welcome email with content like:
-   - "Welcome to Accrual Careers!"
+   - "Welcome to Ledger Launch!"
    - "Thank you for subscribing to our weekly internship newsletter"
    - "You'll receive tips, opportunities, and insights every week"
 5. Save the email template

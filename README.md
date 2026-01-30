@@ -1,4 +1,4 @@
-# Accrual Careers Website
+# Ledger Launch Website
 
 A website to help students find accounting internships and understand CPA firm opportunities.
 
@@ -9,10 +9,10 @@ A website to help students find accounting internships and understand CPA firm o
 1. **Open GitHub Desktop**
 2. **Add Repository**: 
    - Click File → Add Local Repository
-   - Select this folder: `C:\Users\jacks\OneDrive - Bentley University\Accrual Careers`
+   - Select this folder: `C:\Users\jacks\OneDrive - Bentley University\Ledger Launch`
 3. **Publish to GitHub**:
    - Click "Publish repository" button at the top
-   - Name your repository (e.g., "Accrual Careers")
+   - Name your repository (e.g., "Ledger Launch")
    - Make sure "Keep this code private" is unchecked if you want public access
    - Click "Publish repository"
 4. **Enable GitHub Pages**:
