@@ -19,6 +19,24 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Position dropdown menus dynamically to avoid clipping by hero section
+    document.querySelectorAll('.nav-item.dropdown').forEach(dropdown => {
+        const dropdownMenu = dropdown.querySelector('.dropdown-menu');
+        if (dropdownMenu) {
+            dropdown.addEventListener('mouseenter', function() {
+                const rect = this.getBoundingClientRect();
+                dropdownMenu.style.top = `${rect.bottom + window.scrollY}px`;
+                dropdownMenu.style.left = `${rect.left + window.scrollX}px`;
+                dropdownMenu.style.position = 'fixed';
+            });
+            dropdown.addEventListener('mouseleave', function() {
+                dropdownMenu.style.position = '';
+                dropdownMenu.style.top = '';
+                dropdownMenu.style.left = '';
+            });
+        }
+    });
+
     // Close mobile menu when clicking on a link
     document.querySelectorAll('.nav-link, .dropdown-link').forEach(link => {
         link.addEventListener('click', () => {

@@ -352,12 +352,13 @@ pre, code {
     padding: 8rem 1.5rem;
     text-align: center;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
+    overflow-x: visible;
+    overflow-y: visible;
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
     z-index: -1 !important;
-    isolation: isolate;
 }
 
 .hero::before {
