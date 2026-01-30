@@ -140,33 +140,26 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Initialize scroll animations only on landing page (index.html)
-    const isLandingPage = window.location.pathname.endsWith('index.html') || 
-                          window.location.pathname.endsWith('/') || 
-                          window.location.pathname === '' ||
-                          window.location.pathname.endsWith('index.html/');
-    
-    if (isLandingPage) {
-        initScrollAnimations();
+    // Initialize scroll animations
+    initScrollAnimations();
 
-        // Check for elements already in viewport on page load
-        function checkInitialViewport() {
-            const animatedElements = document.querySelectorAll('.scroll-fade-in, .scroll-slide-up, .scroll-slide-left, .scroll-slide-right, .scroll-scale-in');
-            animatedElements.forEach(el => {
-                const rect = el.getBoundingClientRect();
-                const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
-                if (isVisible) {
-                    // Small delay to ensure smooth animation
-                    setTimeout(() => {
-                        el.classList.add('animated');
-                    }, 100);
-                }
-            });
-        }
-
-        // Run check after a short delay to ensure DOM is ready
-        setTimeout(checkInitialViewport, 200);
+    // Check for elements already in viewport on page load
+    function checkInitialViewport() {
+        const animatedElements = document.querySelectorAll('.scroll-fade-in, .scroll-slide-up, .scroll-slide-left, .scroll-slide-right, .scroll-scale-in');
+        animatedElements.forEach(el => {
+            const rect = el.getBoundingClientRect();
+            const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+            if (isVisible) {
+                // Small delay to ensure smooth animation
+                setTimeout(() => {
+                    el.classList.add('animated');
+                }, 100);
+            }
+        });
     }
+
+    // Run check after a short delay to ensure DOM is ready
+    setTimeout(checkInitialViewport, 200);
 
     // Tab functionality
     const tabButtons = document.querySelectorAll('.tab-button');
