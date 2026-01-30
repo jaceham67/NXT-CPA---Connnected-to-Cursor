@@ -259,7 +259,7 @@ pre, code {
     overflow: visible !important;
     overflow-y: visible !important;
     overflow-x: visible !important;
-    display: block !important;
+    display: none !important;
     height: auto !important;
     clip: auto !important;
     clip-path: none !important;
@@ -270,8 +270,12 @@ pre, code {
     border: none;
 }
 
+.nav-item.dropdown.active .dropdown-menu {
+    display: block !important;
+}
+
 /* Dark header box for active dropdown */
-.dropdown-menu::before {
+.nav-item.dropdown.active .dropdown-menu::before {
     content: attr(data-category);
     display: block;
     background-color: #2c3e50;
@@ -309,7 +313,7 @@ pre, code {
 }
 
 .nav-item.dropdown.active .dropdown-menu li {
-    display: block !important;
+    display: inline-block !important;
     visibility: visible !important;
     opacity: 1 !important;
 }
@@ -333,7 +337,7 @@ pre, code {
     opacity: 1 !important;
     height: auto !important;
     border-left: 1px solid var(--border-color);
-    background-color: var(--bg-white);
+    background-color: transparent;
 }
 
 .dropdown-link:first-child {
@@ -346,21 +350,15 @@ pre, code {
 }
 
 .dropdown-menu li {
-    display: block !important;
-    width: 100%;
+    display: inline-block !important;
     list-style: none;
     margin: 0;
     padding: 0;
-    white-space: normal;
+    white-space: nowrap;
     visibility: visible !important;
     opacity: 1 !important;
     height: auto !important;
-    min-height: auto !important;
-    max-height: none !important;
-    overflow: visible !important;
-    clip: auto !important;
-    clip-path: none !important;
-    position: relative;
+    vertical-align: top;
 }
 
 

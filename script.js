@@ -31,19 +31,25 @@ document.addEventListener('DOMContentLoaded', () => {
             
             // Click handler for nav link
             navLink.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                
+                // Don't prevent default - allow navigation if clicking the link directly
+                // Only toggle dropdown if clicking the link area
                 const isActive = dropdown.classList.contains('active');
                 
                 // Close all other dropdowns
                 document.querySelectorAll('.nav-item.dropdown').forEach(item => {
-                    item.classList.remove('active');
+                    if (item !== dropdown) {
+                        item.classList.remove('active');
+                    }
                 });
                 
                 // Toggle current dropdown
                 if (!isActive) {
+                    e.preventDefault();
+                    e.stopPropagation();
                     dropdown.classList.add('active');
+                } else {
+                    // If already active, allow navigation
+                    dropdown.classList.remove('active');
                 }
             });
         }
