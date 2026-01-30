@@ -238,7 +238,7 @@ pre, code {
     visibility: hidden;
     transform: translateY(-10px);
     transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
-    z-index: 99999 !important;
+    z-index: 100000 !important;
     max-height: none !important;
     min-height: auto !important;
     overflow: visible !important;
@@ -250,6 +250,8 @@ pre, code {
     clip-path: none !important;
     contain: none !important;
     will-change: transform;
+    pointer-events: auto !important;
+    isolation: auto;
 }
 
 .dropdown-menu > li {
@@ -354,7 +356,8 @@ pre, code {
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
-    z-index: 1 !important;
+    z-index: -1 !important;
+    isolation: isolate;
 }
 
 .hero::before {
@@ -373,6 +376,11 @@ pre, code {
 .hero-content {
     position: relative;
     z-index: 1;
+    pointer-events: none;
+}
+
+.hero-content * {
+    pointer-events: auto;
 }
 
 .hero-content h2 {
