@@ -19,72 +19,95 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Position dropdown menus using fixed positioning to ensure they appear above everything
+    // New click-based dropdown panel system
+    const dropdownPanel = document.getElementById('dropdown-panel');
+    let activeDropdown = null;
+    
     document.querySelectorAll('.nav-item.dropdown').forEach(dropdown => {
+        const navLink = dropdown.querySelector('.nav-link');
         const dropdownMenu = dropdown.querySelector('.dropdown-menu');
-        if (dropdownMenu) {
-            let isOpen = false;
-            
-            dropdown.addEventListener('mouseenter', function() {
-                isOpen = true;
-                // Ensure dropdown is visible
-                dropdownMenu.style.display = 'block';
+        
+        if (navLink && dropdownMenu && dropdownPanel) {
+            navLink.addEventListener('click', function(e) {
+                e.preventDefault();
                 
-                // Use fixed positioning to ensure it's above everything
-                setTimeout(() => {
-                    const rect = this.getBoundingClientRect();
-                    dropdownMenu.style.position = 'fixed';
-                    dropdownMenu.style.top = `${rect.bottom}px`;
-                    dropdownMenu.style.left = `${rect.left}px`;
-                    dropdownMenu.style.width = `${Math.max(250, rect.width)}px`;
-                    dropdownMenu.style.zIndex = '10003';
-                }, 0);
-            });
-            
-            dropdown.addEventListener('mouseleave', function() {
-                setTimeout(() => {
-                    if (!dropdown.matches(':hover') && !dropdownMenu.matches(':hover')) {
-                        isOpen = false;
-                        dropdownMenu.style.position = '';
-                        dropdownMenu.style.top = '';
-                        dropdownMenu.style.left = '';
-                        dropdownMenu.style.width = '';
-                        dropdownMenu.style.display = '';
-                        dropdownMenu.style.zIndex = '';
-                    }
-                }, 100);
-            });
-            
-            dropdownMenu.addEventListener('mouseenter', function() {
-                // Keep menu visible when hovering over it
-                isOpen = true;
-                this.style.display = 'block';
-            });
-            
-            dropdownMenu.addEventListener('mouseleave', function() {
-                setTimeout(() => {
-                    if (!dropdown.matches(':hover') && !this.matches(':hover')) {
-                        isOpen = false;
-                        this.style.position = '';
-                        this.style.top = '';
-                        this.style.left = '';
-                        this.style.width = '';
-                        this.style.display = '';
-                        this.style.zIndex = '';
-                    }
-                }, 100);
-            });
-            
-            // Update position on scroll
-            window.addEventListener('scroll', () => {
-                if (isOpen && dropdown.matches(':hover')) {
-                    const rect = dropdown.getBoundingClientRect();
-                    dropdownMenu.style.top = `${rect.bottom}px`;
-                    dropdownMenu.style.left = `${rect.left}px`;
+                // If clicking the same dropdown, close it
+                if (activeDropdown === dropdown) {
+                    closeDropdownPanel();
+                    return;
                 }
+                
+                // Close any other open dropdown
+                closeDropdownPanel();
+                
+                // Open this dropdown
+                activeDropdown = dropdown;
+                dropdown.classList.add('active');
+                
+                // Get the navbar height for positioning
+                const navbar = document.querySelector('.navbar');
+                const navbarHeight = navbar ? navbar.offsetHeight : 0;
+                
+                // Set panel position - use fixed positioning relative to viewport
+                dropdownPanel.style.top = `${navbarHeight}px`;
+                dropdownPanel.style.left = '0';
+                dropdownPanel.style.right = '0';
+                dropdownPanel.style.width = '100%';
+                
+                // Populate panel with dropdown content
+                const panelContent = dropdownPanel.querySelector('.dropdown-panel-content');
+                if (panelContent) {
+                    panelContent.innerHTML = '';
+                    
+                    // Create sections from dropdown menu items
+                    const menuItems = dropdownMenu.querySelectorAll('li');
+                    menuItems.forEach(item => {
+                        const link = item.querySelector('a');
+                        if (link) {
+                            const section = document.createElement('div');
+                            section.className = 'dropdown-panel-section';
+                            section.innerHTML = `<a href="${link.href}" class="dropdown-link">${link.textContent.trim()}</a>`;
+                            panelContent.appendChild(section);
+                        }
+                    });
+                }
+                
+                // Show panel
+                dropdownPanel.classList.add('active');
             });
         }
     });
+    
+    // Close dropdown panel when clicking outside
+    document.addEventListener('click', function(e) {
+        if (dropdownPanel && activeDropdown) {
+            const clickedInside = dropdownPanel.contains(e.target) || 
+                                 activeDropdown.contains(e.target);
+            if (!clickedInside) {
+                closeDropdownPanel();
+            }
+        }
+    });
+    
+    // Close dropdown panel function
+    function closeDropdownPanel() {
+        if (dropdownPanel) {
+            dropdownPanel.classList.remove('active');
+        }
+        if (activeDropdown) {
+            activeDropdown.classList.remove('active');
+            activeDropdown = null;
+        }
+    }
+    
+    // Close panel when clicking on a dropdown link
+    if (dropdownPanel) {
+        dropdownPanel.addEventListener('click', function(e) {
+            if (e.target.classList.contains('dropdown-link')) {
+                closeDropdownPanel();
+            }
+        });
+    }
 
     // Close mobile menu when clicking on a link
     document.querySelectorAll('.nav-link, .dropdown-link').forEach(link => {
