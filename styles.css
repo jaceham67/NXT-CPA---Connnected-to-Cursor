@@ -614,6 +614,29 @@ pre, code {
     bottom: -2px;
 }
 
+/* Hide all tabs except the first one initially */
+.tab-button:not(:first-child) {
+    opacity: 0;
+    visibility: hidden;
+    max-width: 0;
+    min-width: 0;
+    padding-left: 0;
+    padding-right: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    transition: opacity 0.3s ease, visibility 0.3s ease, max-width 0.3s ease, padding 0.3s ease;
+}
+
+/* Show all tabs on hover */
+.tabs:hover .tab-button:not(:first-child) {
+    opacity: 1;
+    visibility: visible;
+    max-width: 300px;
+    min-width: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
 .tab-button:hover {
     color: var(--primary-color);
     background-color: var(--bg-light);
