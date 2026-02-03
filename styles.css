@@ -263,7 +263,7 @@ pre, code {
 .mobile-nav-buttons {
     display: none;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 1rem;
     width: 100%;
     max-width: 400px;
     margin: 2rem auto 0;
@@ -271,26 +271,27 @@ pre, code {
 }
 
 .mobile-nav-button {
-    display: block;
-    background-color: var(--bg-white);
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    background-color: white;
     color: var(--primary-color);
     text-decoration: none;
-    padding: 1rem 1.5rem;
-    border-radius: 8px;
+    border-radius: 50px;
     font-weight: 600;
-    font-size: 0.95rem;
+    font-size: 1.1rem;
     text-align: center;
-    border: 2px solid var(--primary-color);
     transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    border: 2px solid transparent;
     width: 100%;
     box-sizing: border-box;
 }
 
 .mobile-nav-button:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
     background-color: var(--primary-color);
     color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 82, 204, 0.3);
 }
 
 /* Hero Section */
@@ -968,6 +969,12 @@ footer p {
 
     .mobile-nav-buttons {
         display: flex;
+    }
+
+    /* Hide original CTA buttons on mobile */
+    .cta-button,
+    .cta-button-coaching {
+        display: none !important;
     }
 
     .nav-menu {
