@@ -964,7 +964,7 @@ footer p {
     }
 
     .mobile-menu-button {
-        display: block;
+        display: none;
     }
 
     .mobile-nav-buttons {
