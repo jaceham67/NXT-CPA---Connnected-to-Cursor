@@ -1,14 +1,21 @@
 // All event listeners that need DOM to be ready
 document.addEventListener('DOMContentLoaded', () => {
     // Mobile Navigation Toggle
-    const hamburger = document.querySelector('.hamburger');
+    const mobileMenuButton = document.querySelector('.mobile-menu-button');
     const navMenu = document.querySelector('.nav-menu');
     
-    if (hamburger && navMenu) {
-        hamburger.addEventListener('click', () => {
+    if (mobileMenuButton && navMenu) {
+        mobileMenuButton.addEventListener('click', () => {
             const isActive = navMenu.classList.contains('active');
             navMenu.classList.toggle('active');
-            hamburger.classList.toggle('active');
+            mobileMenuButton.classList.toggle('active');
+            
+            // Update button text
+            if (isActive) {
+                mobileMenuButton.textContent = 'Menu';
+            } else {
+                mobileMenuButton.textContent = 'Close';
+            }
             
             // Prevent body scroll when menu is open
             if (!isActive) {
@@ -23,7 +30,10 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.nav-link').forEach(link => {
         link.addEventListener('click', () => {
             if (navMenu) navMenu.classList.remove('active');
-            if (hamburger) hamburger.classList.remove('active');
+            if (mobileMenuButton) {
+                mobileMenuButton.classList.remove('active');
+                mobileMenuButton.textContent = 'Menu';
+            }
             // Restore body scroll when menu closes
             document.body.style.overflow = '';
         });

@@ -234,34 +234,29 @@ pre, code {
 }
 
 
-.hamburger {
+.mobile-menu-button {
     display: none;
-    flex-direction: column;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-weight: 600;
     cursor: pointer;
-    gap: 4px;
     z-index: 1001;
-    padding: 0.5rem;
-    position: relative;
-}
-
-.hamburger span {
-    width: 25px;
-    height: 3px;
-    background-color: var(--text-dark);
     transition: all 0.3s ease;
-    display: block;
+    font-family: inherit;
+    white-space: nowrap;
 }
 
-.hamburger.active span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
+.mobile-menu-button:hover {
+    background-color: var(--hover-color);
+    transform: translateY(-1px);
 }
 
-.hamburger.active span:nth-child(2) {
-    opacity: 0;
-}
-
-.hamburger.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(7px, -6px);
+.mobile-menu-button.active {
+    background-color: var(--hover-color);
 }
 
 /* Hero Section */
@@ -933,9 +928,8 @@ footer p {
         touch-action: pan-y !important;
     }
 
-    .hamburger {
-        display: flex;
-        z-index: 1001;
+    .mobile-menu-button {
+        display: block;
     }
 
     .nav-menu {
