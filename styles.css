@@ -259,6 +259,40 @@ pre, code {
     background-color: var(--hover-color);
 }
 
+/* Mobile Navigation Buttons */
+.mobile-nav-buttons {
+    display: none;
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+    max-width: 400px;
+    margin: 2rem auto 0;
+    padding: 0 1rem;
+}
+
+.mobile-nav-button {
+    display: block;
+    background-color: var(--bg-white);
+    color: var(--primary-color);
+    text-decoration: none;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-align: center;
+    border: 2px solid var(--primary-color);
+    transition: all 0.3s ease;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.mobile-nav-button:hover {
+    background-color: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 82, 204, 0.3);
+}
+
 /* Hero Section */
 .hero {
     background: linear-gradient(135deg, rgba(0, 51, 102, 0.9) 0%, rgba(0, 64, 128, 0.9) 50%, rgba(0, 82, 204, 0.9) 100%),
@@ -930,6 +964,10 @@ footer p {
 
     .mobile-menu-button {
         display: block;
+    }
+
+    .mobile-nav-buttons {
+        display: flex;
     }
 
     .nav-menu {
