@@ -234,7 +234,6 @@ pre, code {
 }
 
 
-/* Mobile Menu Button - Hidden on Desktop */
 .mobile-menu-button {
     display: none;
     background-color: var(--primary-color);
@@ -245,13 +244,10 @@ pre, code {
     font-size: 0.95rem;
     font-weight: 600;
     cursor: pointer;
-    z-index: -1;
+    z-index: 1001;
     transition: all 0.3s ease;
     font-family: inherit;
     white-space: nowrap;
-    visibility: hidden;
-    opacity: 0;
-    pointer-events: none;
 }
 
 .mobile-menu-button:hover {
@@ -264,9 +260,8 @@ pre, code {
 }
 
 /* Mobile Navigation Buttons */
-/* Mobile Navigation Buttons - Hidden on Desktop */
 .mobile-nav-buttons {
-    display: none;
+    display: none !important;
     flex-direction: column;
     gap: 1rem;
     width: 100%;
@@ -277,12 +272,10 @@ pre, code {
     z-index: -1;
     pointer-events: none;
     text-align: center;
-    visibility: hidden;
-    opacity: 0;
 }
 
 .mobile-nav-button {
-    display: none;
+    display: inline-block;
     padding: 1rem 2.5rem;
     background-color: white;
     color: var(--primary-color);
@@ -298,12 +291,16 @@ pre, code {
     box-sizing: border-box;
     cursor: pointer;
     -webkit-tap-highlight-color: rgba(0, 82, 204, 0.2);
-    pointer-events: none;
+    /* Ensure buttons are clickable - override all parent pointer-events */
+    pointer-events: auto !important;
     position: relative;
-    z-index: -1;
+    z-index: 10001;
+    /* Prevent text selection on mobile */
     -webkit-user-select: none;
     user-select: none;
+    /* Ensure touch events work */
     touch-action: manipulation;
+    /* Force clickability */
     -webkit-touch-callout: none;
 }
 
@@ -973,41 +970,6 @@ footer p {
     margin: 0.5rem 0;
 }
 
-/* Desktop Styles - Ensure mobile elements are hidden */
-@media (min-width: 769px) {
-    .mobile-nav-buttons {
-        display: none !important;
-        visibility: hidden !important;
-        opacity: 0 !important;
-        pointer-events: none !important;
-        z-index: -1 !important;
-    }
-
-    .mobile-nav-button {
-        display: none !important;
-        visibility: hidden !important;
-        opacity: 0 !important;
-        pointer-events: none !important;
-        z-index: -1 !important;
-    }
-
-    .mobile-menu-button {
-        display: none !important;
-        visibility: hidden !important;
-        opacity: 0 !important;
-        pointer-events: none !important;
-        z-index: -1 !important;
-    }
-
-    .cta-button,
-    .cta-button-coaching {
-        display: inline-block !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        pointer-events: auto !important;
-    }
-}
-
 /* Responsive Design */
 @media (max-width: 768px) {
     html {
@@ -1032,25 +994,13 @@ footer p {
     }
 
     .mobile-menu-button {
-        display: block !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        pointer-events: auto !important;
-        z-index: 1001 !important;
+        display: none;
     }
 
     .mobile-nav-buttons {
         display: flex !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        z-index: 10000 !important;
-        pointer-events: auto !important;
-    }
-
-    .mobile-nav-button {
-        display: inline-block !important;
-        pointer-events: auto !important;
-        z-index: 10001 !important;
+        z-index: 10000;
+        pointer-events: auto;
     }
 
     /* Hide original CTA buttons on mobile */
