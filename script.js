@@ -39,24 +39,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // CTA Buttons Handler
-    const getStartedBtn = document.getElementById('get-started-btn');
-    const getCoachingBtn = document.getElementById('get-coaching-btn');
-
-    if (getStartedBtn) {
-        getStartedBtn.addEventListener('click', () => {
-            console.log('Get Started button clicked');
-            window.location.href = 'freshman-internships.html';
-        });
-    }
-
-    if (getCoachingBtn) {
-        getCoachingBtn.addEventListener('click', () => {
-            console.log('Get Coaching button clicked');
-            window.location.href = 'coaching.html';
-        });
-    }
-
     // Smooth scroll for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
