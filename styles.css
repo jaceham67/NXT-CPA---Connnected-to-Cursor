@@ -268,6 +268,9 @@ pre, code {
     max-width: 400px;
     margin: 2rem auto 0;
     padding: 0 1rem;
+    position: relative;
+    z-index: 10;
+    pointer-events: auto;
 }
 
 .mobile-nav-button {
@@ -352,19 +355,13 @@ pre, code {
     pointer-events: auto;
 }
 
-/* Ensure mobile nav buttons are always clickable - override hero-content pointer-events */
-.hero-content .mobile-nav-buttons {
-    pointer-events: auto !important;
-}
-
-.hero-content .mobile-nav-button,
+/* Ensure mobile nav buttons are always clickable */
 .mobile-nav-button {
-    pointer-events: auto !important;
+    pointer-events: auto;
     user-select: none;
     -webkit-user-select: none;
-    /* Force clickability */
     position: relative;
-    z-index: 9999 !important;
+    z-index: 11;
 }
 
 .hero-content h2 {
