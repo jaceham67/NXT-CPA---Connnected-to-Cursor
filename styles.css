@@ -266,11 +266,12 @@ pre, code {
     gap: 1rem;
     width: 100%;
     max-width: 400px;
-    margin: 2rem auto 0;
+    margin: -4rem auto 2rem;
     padding: 0 1rem;
     position: relative;
-    z-index: 10;
+    z-index: 10000;
     pointer-events: auto;
+    text-align: center;
 }
 
 .mobile-nav-button {
@@ -293,12 +294,14 @@ pre, code {
     /* Ensure buttons are clickable - override all parent pointer-events */
     pointer-events: auto !important;
     position: relative;
-    z-index: 1000;
+    z-index: 10001;
     /* Prevent text selection on mobile */
     -webkit-user-select: none;
     user-select: none;
     /* Ensure touch events work */
     touch-action: manipulation;
+    /* Force clickability */
+    -webkit-touch-callout: none;
 }
 
 .mobile-nav-button:hover {
