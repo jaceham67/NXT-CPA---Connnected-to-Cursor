@@ -268,9 +268,6 @@ pre, code {
     max-width: 400px;
     margin: 2rem auto 0;
     padding: 0 1rem;
-    pointer-events: auto !important;
-    position: relative;
-    z-index: 100;
 }
 
 .mobile-nav-button {
@@ -288,11 +285,17 @@ pre, code {
     border: 2px solid transparent;
     width: 100%;
     box-sizing: border-box;
-    pointer-events: auto !important;
     cursor: pointer;
-    position: relative;
-    z-index: 101;
     -webkit-tap-highlight-color: rgba(0, 82, 204, 0.2);
+    /* Ensure buttons are clickable - override all parent pointer-events */
+    pointer-events: auto !important;
+    position: relative;
+    z-index: 1000;
+    /* Prevent text selection on mobile */
+    -webkit-user-select: none;
+    user-select: none;
+    /* Ensure touch events work */
+    touch-action: manipulation;
 }
 
 .mobile-nav-button:hover {
@@ -347,6 +350,21 @@ pre, code {
 
 .hero-content * {
     pointer-events: auto;
+}
+
+/* Ensure mobile nav buttons are always clickable - override hero-content pointer-events */
+.hero-content .mobile-nav-buttons {
+    pointer-events: auto !important;
+}
+
+.hero-content .mobile-nav-button,
+.mobile-nav-button {
+    pointer-events: auto !important;
+    user-select: none;
+    -webkit-user-select: none;
+    /* Force clickability */
+    position: relative;
+    z-index: 9999 !important;
 }
 
 .hero-content h2 {
