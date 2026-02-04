@@ -3,6 +3,16 @@
 
 const blogPosts = [
     {
+        id: 4,
+        title: "How to Approach Accounting Firms at a Career Fair",
+        category: "freshman",
+        date: "2026-01-30",
+        excerpt: "Feeling nervous about career fairs? Learn how to approach accounting firms with confidence, build rapport with recruiters, and stand out from the competition.",
+        readTime: "8 min read",
+        link: "blog/career-fair-guide.html",
+        author: "Jackson Denham"
+    },
+    {
         id: 3,
         title: "From Nerves to Next-Level: Mastering the Virtual Interview",
         category: "freshman",
