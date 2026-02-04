@@ -261,7 +261,7 @@ pre, code {
 
 /* Mobile Navigation Buttons */
 .mobile-nav-buttons {
-    display: none;
+    display: none !important;
     flex-direction: column;
     gap: 1rem;
     width: 100%;
@@ -269,8 +269,8 @@ pre, code {
     margin: -4rem auto 2rem;
     padding: 0 1rem;
     position: relative;
-    z-index: 10000;
-    pointer-events: auto;
+    z-index: -1;
+    pointer-events: none;
     text-align: center;
 }
 
@@ -388,7 +388,7 @@ pre, code {
 }
 
 .cta-button {
-    display: inline-block;
+    display: inline-block !important;
     padding: 1rem 2.5rem;
     background-color: white;
     color: var(--primary-color);
@@ -411,7 +411,7 @@ pre, code {
 }
 
 .cta-button-coaching {
-    display: inline-block;
+    display: inline-block !important;
     padding: 1rem 2.5rem;
     background: linear-gradient(135deg, #ff9800 0%, #ff6b00 100%);
     color: white;
@@ -998,7 +998,9 @@ footer p {
     }
 
     .mobile-nav-buttons {
-        display: flex;
+        display: flex !important;
+        z-index: 10000;
+        pointer-events: auto;
     }
 
     /* Hide original CTA buttons on mobile */
