@@ -117,9 +117,12 @@ function initializeBlogCarousel() {
     }
 
     // Carousel navigation
-    if (prevBtn && nextBtn) {
+    if (prevBtn && nextBtn && recentBlogs.length > 0) {
         let currentIndex = 0;
-        const cardWidth = carouselContainer.querySelector('.blog-card').offsetWidth;
+        const firstCard = carouselContainer.querySelector('.blog-card');
+        if (!firstCard) return; // No cards to navigate
+        
+        const cardWidth = firstCard.offsetWidth;
         const gap = 32; // 2rem gap
         const scrollAmount = cardWidth + gap;
 
@@ -204,10 +207,14 @@ function createDots(count, container) {
         if (i === 0) dot.classList.add('active');
         dot.setAttribute('data-index', i);
         dot.addEventListener('click', () => {
-            const cardWidth = document.querySelector('.blog-card').offsetWidth;
-            const gap = 32;
-            const scrollAmount = cardWidth + gap;
-            document.getElementById('blog-carousel-container').scrollLeft = i * scrollAmount;
+            const carouselContainer = document.getElementById('blog-carousel-container');
+            const firstCard = carouselContainer?.querySelector('.blog-card');
+            if (firstCard && carouselContainer) {
+                const cardWidth = firstCard.offsetWidth;
+                const gap = 32;
+                const scrollAmount = cardWidth + gap;
+                carouselContainer.scrollLeft = i * scrollAmount;
+            }
         });
         container.appendChild(dot);
     }
