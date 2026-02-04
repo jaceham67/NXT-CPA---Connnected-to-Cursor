@@ -88,8 +88,9 @@ function initializeBlogCarousel() {
 
     if (!carouselContainer) return;
 
-    // Get recent blog posts
-    const recentBlogs = typeof getRecentBlogs !== 'undefined' ? getRecentBlogs(3) : [];
+    // Get all blog posts (sorted by date, newest first) - show all blogs
+    const allBlogs = typeof blogPosts !== 'undefined' ? [...blogPosts].sort((a, b) => new Date(b.date) - new Date(a.date)) : [];
+    const recentBlogs = allBlogs; // Show all blogs, not just 3
 
     if (recentBlogs.length === 0) {
         return; // Keep placeholder message
@@ -113,6 +114,12 @@ function initializeBlogCarousel() {
         if (carouselDots) {
             carouselDots.style.display = 'flex';
             createDots(recentBlogs.length, carouselDots);
+        }
+    } else {
+        // Even with one blog, enable horizontal scrolling
+        if (carouselContainer) {
+            carouselContainer.style.overflowX = 'auto';
+            carouselContainer.style.scrollBehavior = 'smooth';
         }
     }
 

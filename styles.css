@@ -1250,25 +1250,43 @@ footer p {
 .blog-carousel-container {
     display: flex;
     gap: 2rem;
-    overflow: visible;
-    overflow-x: visible;
-    overflow-y: visible;
-    scroll-snap-type: none;
-    scroll-behavior: auto;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
     padding: 1rem 0;
     width: 100%;
     box-sizing: border-box;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) transparent;
 }
 
 .blog-carousel-container::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera */
+    height: 8px;
+}
+
+.blog-carousel-container::-webkit-scrollbar-track {
+    background: var(--bg-light);
+    border-radius: 10px;
+}
+
+.blog-carousel-container::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 10px;
+}
+
+.blog-carousel-container::-webkit-scrollbar-thumb:hover {
+    background: var(--hover-color);
 }
 
 .blog-card {
-    flex: 0 0 calc(33.333% - 1.34rem);
+    flex: 0 0 auto;
+    width: 350px;
     min-width: 300px;
+    max-width: 400px;
     background-color: white;
     border-radius: 12px;
     padding: 2rem;
