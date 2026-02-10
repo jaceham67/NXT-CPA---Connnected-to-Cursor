@@ -218,8 +218,8 @@ function createDots(count, container) {
             const firstCard = carouselContainer?.querySelector('.blog-card');
             if (firstCard && carouselContainer) {
                 const cardWidth = firstCard.offsetWidth;
-                const gap = 32;
-                const scrollAmount = cardWidth + gap;
+            const gap = 32;
+            const scrollAmount = cardWidth + gap;
                 carouselContainer.scrollLeft = i * scrollAmount;
             }
         });
