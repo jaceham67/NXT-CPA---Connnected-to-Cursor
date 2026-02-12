@@ -983,17 +983,6 @@ pre, code {
     font-weight: 700;
     border: 1px solid rgba(255, 255, 255, 0.2);
     letter-spacing: 0.3px;
-    transition: background 0.2s ease;
-}
-
-.comparison-table th:hover {
-    background: linear-gradient(135deg, var(--hover-color) 0%, var(--primary-color) 100%);
-}
-
-.comparison-table th .sort-indicator {
-    font-size: 0.8em;
-    opacity: 0.7;
-    margin-left: 0.25rem;
 }
 
 .comparison-table td {
