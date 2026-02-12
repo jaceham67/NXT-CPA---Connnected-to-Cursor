@@ -991,6 +991,28 @@ pre, code {
     vertical-align: top;
 }
 
+.comparison-table td .toggle-locations-btn {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 0.5rem;
+    font-size: 0.9rem;
+    font-family: inherit;
+    transition: color 0.2s ease;
+}
+
+.comparison-table td .toggle-locations-btn:hover {
+    color: var(--hover-color);
+}
+
+.comparison-table td .locations-full {
+    display: none;
+    line-height: 1.6;
+}
+
 .comparison-table tr:nth-child(even) {
     background-color: var(--bg-light);
 }

@@ -96,17 +96,31 @@
                                         <th>Years Eligible</th>
                                         <th>Locations</th>
                                         <th>Application Deadline</th>
-                                        <th>Estimated Salary</th>
+                                        <th>Estimated Pay</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <td><strong>Deloitte</strong></td>
-                                        <td>Audit Intern</td>
+                                        <td><a href="https://apply.deloitte.com/en_US/careers/JobDetail/Audit-Assurance-Intern-Financial-Statement-Audit-Summer-2026/303896" target="_blank" rel="noopener noreferrer" style="color: var(--primary-color); text-decoration: none;">Audit Intern (Summer 2026)</a></td>
                                         <td>Juniors (Rising Seniors)</td>
-                                        <td>Multiple locations nationwide</td>
-                                        <td>TBD</td>
-                                        <td>TBD</td>
+                                        <td>Los Angeles, CA; San Jose, CA</td>
+                                        <td>February 22, 2026</td>
+                                        <td>$25.64-$51.44/hour</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Deloitte</strong></td>
+                                        <td>Audit & Assurance Intern (Summer 2027)</td>
+                                        <td>Juniors (Rising Seniors)</td>
+                                        <td>
+                                            <span class="locations-preview">Multiple locations (35+)</span>
+                                            <span class="locations-full" style="display: none;">
+                                                Baltimore, MD; Boise, ID; Cincinnati, OH; Cleveland, OH; Columbus, OH; Costa Mesa, CA; Dallas, TX; Davenport, IA; Denver, CO; Honolulu, HI; Jericho, NY; Las Vegas, NV; Los Angeles, CA; Louisville, KY; McLean, VA; Midland, MI; Minneapolis, MN; Morristown, NJ; New Orleans, LA; New York, NY; Omaha, NE; Portland, OR; Princeton, NJ; Richmond, VA; Sacramento, CA; Salt Lake City, UT; San Diego, CA; San Francisco, CA; San Jose, CA; San Juan, PR; Seattle, WA; St. Louis, MO; Stamford, CT; Tempe, AZ; Tulsa, OK
+                                            </span>
+                                            <button class="toggle-locations-btn" onclick="toggleLocations(this)" style="background: none; border: none; color: var(--primary-color); text-decoration: underline; cursor: pointer; padding: 0; margin-left: 0.5rem; font-size: 0.9rem;">Show all</button>
+                                        </td>
+                                        <td>February 22, 2027</td>
+                                        <td>$25.64-$51.44/hour</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -125,7 +139,7 @@
                                         <th>Years Eligible</th>
                                         <th>Locations</th>
                                         <th>Application Deadline</th>
-                                        <th>Estimated Salary</th>
+                                        <th>Estimated Pay</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -187,6 +201,24 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        function toggleLocations(button) {
+            const row = button.closest('tr');
+            const preview = row.querySelector('.locations-preview');
+            const full = row.querySelector('.locations-full');
+            const isExpanded = full.style.display !== 'none';
+            
+            if (isExpanded) {
+                full.style.display = 'none';
+                preview.style.display = 'inline';
+                button.textContent = 'Show all';
+            } else {
+                full.style.display = 'inline';
+                preview.style.display = 'none';
+                button.textContent = 'Show less';
+            }
+        }
+    </script>
 </body>
 </html>
 
