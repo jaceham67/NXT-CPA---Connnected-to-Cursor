@@ -95,15 +95,15 @@
                     <div style="margin-bottom: 4rem;">
                         <h3 style="color: var(--primary-color); margin-bottom: 1.5rem; font-size: 1.75rem; font-weight: 700;">Audit Internships</h3>
                         <div style="overflow-x: auto; -webkit-overflow-scrolling: touch;">
-                            <table class="comparison-table" style="margin-top: 0;">
+                            <table class="comparison-table sortable-table" id="audit-table" style="margin-top: 0;">
                                 <thead>
                                     <tr>
-                                        <th>Firm</th>
-                                        <th>Role</th>
-                                        <th>Years Eligible</th>
-                                        <th>Locations</th>
-                                        <th>Application Deadline</th>
-                                        <th>Estimated Pay</th>
+                                        <th onclick="sortTable('audit-table', 0)" style="cursor: pointer; user-select: none;">Firm <span class="sort-indicator">↕</span></th>
+                                        <th onclick="sortTable('audit-table', 1)" style="cursor: pointer; user-select: none;">Role <span class="sort-indicator">↕</span></th>
+                                        <th onclick="sortTable('audit-table', 2)" style="cursor: pointer; user-select: none;">Years Eligible <span class="sort-indicator">↕</span></th>
+                                        <th onclick="sortTable('audit-table', 3)" style="cursor: pointer; user-select: none;">Locations <span class="sort-indicator">↕</span></th>
+                                        <th onclick="sortTable('audit-table', 4)" style="cursor: pointer; user-select: none;">Application Deadline <span class="sort-indicator">↕</span></th>
+                                        <th onclick="sortTable('audit-table', 5)" style="cursor: pointer; user-select: none;">Estimated Pay <span class="sort-indicator">↕</span></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -252,15 +252,15 @@
                     <div>
                         <h3 style="color: var(--primary-color); margin-bottom: 1.5rem; font-size: 1.75rem; font-weight: 700;">Tax Internships</h3>
                         <div style="overflow-x: auto; -webkit-overflow-scrolling: touch;">
-                            <table class="comparison-table" style="margin-top: 0;">
+                            <table class="comparison-table sortable-table" id="tax-table" style="margin-top: 0;">
                                 <thead>
                                     <tr>
-                                        <th>Firm</th>
-                                        <th>Role</th>
-                                        <th>Years Eligible</th>
-                                        <th>Locations</th>
-                                        <th>Application Deadline</th>
-                                        <th>Estimated Pay</th>
+                                        <th onclick="sortTable('tax-table', 0)" style="cursor: pointer; user-select: none;">Firm <span class="sort-indicator">↕</span></th>
+                                        <th onclick="sortTable('tax-table', 1)" style="cursor: pointer; user-select: none;">Role <span class="sort-indicator">↕</span></th>
+                                        <th onclick="sortTable('tax-table', 2)" style="cursor: pointer; user-select: none;">Years Eligible <span class="sort-indicator">↕</span></th>
+                                        <th onclick="sortTable('tax-table', 3)" style="cursor: pointer; user-select: none;">Locations <span class="sort-indicator">↕</span></th>
+                                        <th onclick="sortTable('tax-table', 4)" style="cursor: pointer; user-select: none;">Application Deadline <span class="sort-indicator">↕</span></th>
+                                        <th onclick="sortTable('tax-table', 5)" style="cursor: pointer; user-select: none;">Estimated Pay <span class="sort-indicator">↕</span></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -412,6 +412,65 @@
                 preview.style.display = 'none';
                 button.textContent = 'Show less';
             }
+        }
+
+        let sortDirection = {};
+        
+        function sortTable(tableId, columnIndex) {
+            const table = document.getElementById(tableId);
+            const tbody = table.querySelector('tbody');
+            const rows = Array.from(tbody.querySelectorAll('tr'));
+            const isNumeric = columnIndex === 5; // Pay column
+            
+            // Toggle sort direction
+            const sortKey = `${tableId}-${columnIndex}`;
+            sortDirection[sortKey] = sortDirection[sortKey] === 'asc' ? 'desc' : 'asc';
+            const direction = sortDirection[sortKey];
+            
+            // Update sort indicators
+            const headers = table.querySelectorAll('th');
+            headers.forEach((th, idx) => {
+                const indicator = th.querySelector('.sort-indicator');
+                if (indicator) {
+                    if (idx === columnIndex) {
+                        indicator.textContent = direction === 'asc' ? ' ↑' : ' ↓';
+                    } else {
+                        indicator.textContent = ' ↕';
+                    }
+                }
+            });
+            
+            // Sort rows
+            rows.sort((a, b) => {
+                let aVal, bVal;
+                
+                if (columnIndex === 3) {
+                    // Locations column - use preview text or full text
+                    const aPreview = a.querySelector('.locations-preview');
+                    const bPreview = b.querySelector('.locations-preview');
+                    aVal = aPreview ? aPreview.textContent.trim() : a.cells[columnIndex].textContent.trim();
+                    bVal = bPreview ? bPreview.textContent.trim() : b.cells[columnIndex].textContent.trim();
+                } else {
+                    aVal = a.cells[columnIndex].textContent.trim();
+                    bVal = b.cells[columnIndex].textContent.trim();
+                }
+                
+                // Handle numeric sorting for pay
+                if (isNumeric) {
+                    // Extract first number from pay range (e.g., "$34.00-$40.00/hour" -> 34.00)
+                    const aNum = parseFloat(aVal.match(/[\d.]+/)?.[0] || 0);
+                    const bNum = parseFloat(bVal.match(/[\d.]+/)?.[0] || 0);
+                    return direction === 'asc' ? aNum - bNum : bNum - aNum;
+                }
+                
+                // Text sorting
+                if (aVal < bVal) return direction === 'asc' ? -1 : 1;
+                if (aVal > bVal) return direction === 'asc' ? 1 : -1;
+                return 0;
+            });
+            
+            // Re-append sorted rows
+            rows.forEach(row => tbody.appendChild(row));
         }
     </script>
 </body>
