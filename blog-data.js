@@ -9,7 +9,7 @@ const blogPosts = [
         date: "2026-02-04",
         excerpt: "Feeling nervous about career fairs? Learn how to approach accounting firms with confidence, build rapport with recruiters, and stand out from the competition.",
         readTime: "8 min read",
-        link: "blog/career-fair-guide.html",
+        link: "blog/how-to-approach-accounting-firms-at-career-fair.html",
         author: "Jackson Denham"
     },
     {
@@ -19,7 +19,7 @@ const blogPosts = [
         date: "2026-01-28",
         excerpt: "Learn how to master virtual interviews for accounting internships. Tips and tricks to help you skip the learning curve and head straight to the offer.",
         readTime: "10 min read",
-        link: "blog/mastering-virtual-interview.html",
+        link: "blog/from-nerves-to-next-level-mastering-virtual-interview.html",
         author: "Jackson Denham"
     },
     {
@@ -29,7 +29,7 @@ const blogPosts = [
         date: "2026-01-25",
         excerpt: "Understanding the early recruiting timelines for Big Four accounting internships. Learn when to apply for audit, tax, and advisory positions to secure your spot before it's too late.",
         readTime: "6 min read",
-        link: "blog/big-four-timeline.html",
+        link: "blog/how-to-own-big-four-timeline.html",
         author: "Jackson Denham"
     },
     {
@@ -39,7 +39,7 @@ const blogPosts = [
         date: "2026-01-20",
         excerpt: "Securing an internship as a first-year student is challenging, but not impossible. Learn how to navigate the search process, ignore the skeptics, and secure valuable early professional experience.",
         readTime: "8 min read",
-        link: "blog/freshman-internship-guide.html"
+        link: "blog/freshman-internship-navigating-search-ignoring-skeptics.html"
     },
 ];
 
@@ -53,7 +53,7 @@ function formatBlogDate(dateString) {
 function getBlogsByCategory(category) {
     return blogPosts.filter(post => {
         // Show "Mastering the Virtual Interview" on all category pages
-        if (post.link === "blog/mastering-virtual-interview.html") {
+        if (post.link === "blog/from-nerves-to-next-level-mastering-virtual-interview.html") {
             return true;
         }
         return post.category === category;
