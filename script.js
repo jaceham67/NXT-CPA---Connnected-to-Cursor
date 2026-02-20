@@ -170,9 +170,6 @@ function initializeBlogCarousel() {
 }
 
 function createBlogCard(blog) {
-    const card = document.createElement('div');
-    card.className = 'blog-card';
-    
     const categoryColors = {
         freshman: '#0052CC',
         sophomore: '#0066FF',
@@ -185,6 +182,8 @@ function createBlogCard(blog) {
         junior: 'Junior'
     };
 
+    const card = document.createElement('div');
+    card.className = 'blog-card';
     card.innerHTML = `
         <div class="blog-card-category" style="background-color: ${categoryColors[blog.category] || '#0052CC'}">
             ${categoryNames[blog.category] || blog.category}
@@ -196,12 +195,18 @@ function createBlogCard(blog) {
         </div>
     `;
 
-    // Make card clickable if link is provided
+    // Use a real <a> link so search engines can crawl and index the blog URL (fixes SEO: blog shows as individual result)
     if (blog.link) {
-        card.style.cursor = 'pointer';
-        card.addEventListener('click', () => {
-            window.location.href = blog.link;
-        });
+        const link = document.createElement('a');
+        link.href = blog.link;
+        link.setAttribute('rel', 'noopener');
+        link.style.textDecoration = 'none';
+        link.style.color = 'inherit';
+        link.style.display = 'block';
+        link.style.height = '100%';
+        link.className = 'blog-card-link';
+        link.appendChild(card);
+        return link;
     }
 
     return card;
