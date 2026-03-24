@@ -447,7 +447,7 @@ pre, code {
     background: linear-gradient(135deg, #ffa726 0%, #ff8f00 100%);
 }
 
-@keyframes coaching-hero-cta-pulse {
+@keyframes hero-cta-pulse {
     0%, 100% {
         box-shadow: 0 4px 15px rgba(255, 152, 0, 0.45);
     }
@@ -456,12 +456,12 @@ pre, code {
     }
 }
 
-.coaching-hero-cta .cta-button-coaching {
-    animation: coaching-hero-cta-pulse 2.5s ease-in-out infinite;
+.hero-cta-buttons .cta-button-coaching {
+    animation: hero-cta-pulse 2.5s ease-in-out infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .coaching-hero-cta .cta-button-coaching {
+    .hero-cta-buttons .cta-button-coaching {
         animation: none;
     }
 }
