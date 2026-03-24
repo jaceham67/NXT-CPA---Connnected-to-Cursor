@@ -3,6 +3,16 @@
 
 const blogPosts = [
     {
+        id: 5,
+        title: "Junior without an internship? It is not the end of the world!",
+        category: "junior",
+        date: "2026-03-24",
+        excerpt: "No summer internship yet? It is not the end of the world. What to do next: keep applying for 2026 roles, consider fall or winter internships, and remember many firms hire full-time without internship experience.",
+        readTime: "6 min read",
+        link: "blog/junior-without-internship-not-end-of-world.html",
+        author: "Jackson Denham"
+    },
+    {
         id: 4,
         title: "How to Approach Accounting Firms at a Career Fair",
         category: "freshman",
