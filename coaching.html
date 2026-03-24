@@ -85,7 +85,7 @@
                         <div style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background-color: var(--primary-color); color: white; padding: 0.5rem 1.5rem; border-radius: 20px; font-weight: 600; font-size: 0.9rem;">FREE</div>
                         <h3 style="margin-top: 1.5rem;">30-Minute Consultation</h3>
                         <div style="font-size: 2rem; font-weight: 700; color: var(--primary-color); margin: 1rem 0;">$0</div>
-                        <p class="job-description">You do not have to commit to a package right away—see if Ledger Launch coaching is right for you.</p>
+                        <p class="job-description">You do not have to commit to a package right away. See if Ledger Launch coaching is right for you.</p>
                         <ul>
                             <li>One 30-minute one-on-one session</li>
                             <li>Ask questions and learn how coaching can help</li>
@@ -148,6 +148,61 @@
             </div>
         </section>
 
+        <section id="contact" class="content-section" style="scroll-margin-top: 100px; padding-top: 3rem; padding-bottom: 4rem;">
+            <div class="container">
+                <h2>Request Coaching</h2>
+                <p class="intro-text" style="margin-bottom: 2rem;">Tell us which package you are interested in and a bit about where you are in recruiting. We will follow up by email.</p>
+
+                <div id="coaching-form-message" role="status" style="display: none; margin-bottom: 1.5rem; padding: 1rem; border-radius: 5px; background-color: #d1fae5; color: #065f46; font-weight: 500;"></div>
+
+                <!-- Submissions via FormSubmit; first delivery requires confirming the inbox at jdenham@ledger.launch.com -->
+                <form id="coaching-contact-form" action="https://formsubmit.co/jdenham@ledger.launch.com" method="POST" style="max-width: 800px; margin: 0 auto; background-color: var(--bg-white); padding: 2.5rem; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                    <input type="hidden" name="_subject" value="Ledger Launch coaching inquiry">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_next" value="https://ledger-launch.com/coaching.html?sent=1">
+
+                    <div style="margin-bottom: 2rem;">
+                        <label for="coaching-package" style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-dark);">Package *</label>
+                        <select id="coaching-package" name="coaching_package" required style="width: 100%; padding: 0.75rem; border: 2px solid var(--border-color); border-radius: 5px; font-size: 1rem; font-family: inherit;">
+                            <option value="">Select a package...</option>
+                            <option value="Free Consultation">Free Consultation</option>
+                            <option value="Resume Screen">Resume Screen</option>
+                            <option value="Strategy Package">Strategy Package</option>
+                        </select>
+                    </div>
+
+                    <div style="margin-bottom: 2rem;">
+                        <label for="coaching-name" style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-dark);">Name *</label>
+                        <input type="text" id="coaching-name" name="name" required autocomplete="name" style="width: 100%; padding: 0.75rem; border: 2px solid var(--border-color); border-radius: 5px; font-size: 1rem; font-family: inherit;">
+                    </div>
+
+                    <div style="margin-bottom: 2rem;">
+                        <label for="coaching-email" style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-dark);">Email *</label>
+                        <input type="email" id="coaching-email" name="email" required autocomplete="email" style="width: 100%; padding: 0.75rem; border: 2px solid var(--border-color); border-radius: 5px; font-size: 1rem; font-family: inherit;">
+                    </div>
+
+                    <div style="margin-bottom: 2rem;">
+                        <label for="coaching-phone" style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-dark);">Phone number *</label>
+                        <input type="tel" id="coaching-phone" name="phone" required autocomplete="tel" style="width: 100%; padding: 0.75rem; border: 2px solid var(--border-color); border-radius: 5px; font-size: 1rem; font-family: inherit;">
+                    </div>
+
+                    <div style="margin-bottom: 2rem;">
+                        <label for="coaching-process" style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-dark);">Where you stand in the internship process *</label>
+                        <textarea id="coaching-process" name="internship_process" required rows="4" placeholder="For example: exploring options, applying this fall, interviews scheduled, etc." style="width: 100%; padding: 0.75rem; border: 2px solid var(--border-color); border-radius: 5px; font-size: 1rem; font-family: inherit; resize: vertical;"></textarea>
+                    </div>
+
+                    <div style="margin-bottom: 2rem;">
+                        <label for="coaching-comments" style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-dark);">Additional comments</label>
+                        <textarea id="coaching-comments" name="additional_comments" rows="4" style="width: 100%; padding: 0.75rem; border: 2px solid var(--border-color); border-radius: 5px; font-size: 1rem; font-family: inherit; resize: vertical;"></textarea>
+                    </div>
+
+                    <button type="submit" style="width: 100%; padding: 1rem; background-color: var(--primary-color); color: white; border: none; border-radius: 5px; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: background-color 0.3s ease;">Send request</button>
+                </form>
+
+                <p style="max-width: 800px; margin: 2rem auto 0; text-align: center; color: var(--text-light); font-size: 0.95rem;">Submissions are sent to <a href="mailto:jdenham@ledger.launch.com" style="color: var(--primary-color);">jdenham@ledger.launch.com</a>. If you do not hear back within a few business days, check your spam folder.</p>
+            </div>
+        </section>
+
     </main>
 
     <footer>
@@ -169,5 +224,19 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        (function () {
+            if (new URLSearchParams(window.location.search).get('sent') === '1') {
+                var el = document.getElementById('coaching-form-message');
+                if (el) {
+                    el.textContent = 'Thanks! Your request was sent. We will get back to you soon.';
+                    el.style.display = 'block';
+                }
+                if (window.history && window.history.replaceState) {
+                    window.history.replaceState(null, '', window.location.pathname + '#contact');
+                }
+            }
+        })();
+    </script>
 </body>
 </html>
