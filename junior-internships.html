@@ -23,6 +23,7 @@
     <meta property="og:description" content="Complete guide to junior accounting internships with Big 4 and Top 25 firm listings.">
     
     <link rel="stylesheet" href="styles.css">
+    <script src="blog-data.js"></script>
     
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-MLM4XM3KKF"></script>
@@ -565,6 +566,18 @@
                 </div>
             </div>
         </section>
+
+        <!-- Blog Posts Section -->
+        <section class="content-section" style="scroll-margin-top: 100px; background-color: var(--bg-light);">
+            <div class="container">
+                <h2>Related Blog Posts</h2>
+                <p class="intro-text" style="text-align: center; margin-bottom: 2rem;">Expert advice and insights to help you navigate your junior internship search</p>
+
+                <div id="junior-blog-posts" class="jobs-grid">
+                    <!-- Blog posts will be inserted here by JavaScript -->
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer>
@@ -587,6 +600,51 @@
 
     <script src="script.js"></script>
     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const blogContainer = document.getElementById('junior-blog-posts');
+            if (blogContainer) {
+                const juniorBlogs = typeof getBlogsByCategory !== 'undefined' ? getBlogsByCategory('junior') : [];
+
+                if (juniorBlogs.length === 0) {
+                    blogContainer.innerHTML = '<p style="text-align: center; color: var(--text-light); padding: 2rem;">No blog posts available yet. Check back soon!</p>';
+                } else {
+                    juniorBlogs.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+                    juniorBlogs.forEach(blog => {
+                        const card = document.createElement('div');
+                        card.className = 'job-card';
+
+                        const linkStart = blog.link ? `<a href="${blog.link}" style="text-decoration: none; color: inherit; display: block;">` : '';
+                        const linkEnd = blog.link ? '</a>' : '';
+
+                        card.innerHTML = `
+                            ${linkStart}
+                            <div style="display: inline-block; padding: 0.4rem 1rem; background-color: var(--primary-color); color: white; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 1rem;">BLOG POST</div>
+                            <h3 style="font-size: 1.5rem; font-weight: 700; color: var(--text-dark); margin-bottom: 0.75rem; line-height: 1.3;">${blog.title}</h3>
+                            <p style="color: var(--text-light); margin-bottom: 1rem; line-height: 1.6;">${blog.excerpt}</p>
+                            <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.9rem; color: var(--text-light); padding-top: 1rem; border-top: 1px solid var(--border-color);">
+                                <span>${formatBlogDate(blog.date)}</span>
+                                ${blog.readTime ? `<span>${blog.readTime}</span>` : ''}
+                            </div>
+                            ${linkEnd}
+                        `;
+
+                        if (blog.link) {
+                            card.style.cursor = 'pointer';
+                            card.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
+                            card.addEventListener('mouseenter', function() {
+                                this.style.transform = 'translateY(-5px)';
+                            });
+                            card.addEventListener('mouseleave', function() {
+                                this.style.transform = 'translateY(0)';
+                            });
+                        }
+
+                        blogContainer.appendChild(card);
+                    });
+                }
+            }
+        });
     </script>
 </body>
 </html>
