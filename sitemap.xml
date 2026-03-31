@@ -55,6 +55,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://ledger-launch.com/blog/</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://ledger-launch.com/blog/junior-without-internship-not-end-of-world.html</loc>
     <lastmod>2026-03-24</lastmod>
     <changefreq>monthly</changefreq>
