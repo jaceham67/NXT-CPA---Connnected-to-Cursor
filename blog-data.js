@@ -53,12 +53,6 @@ const blogPosts = [
     },
 ];
 
-// Helper function to get formatted date
-function formatBlogDate(dateString) {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-}
-
 // Helper function to get blog posts by category
 function getBlogsByCategory(category) {
     return blogPosts.filter(post => {

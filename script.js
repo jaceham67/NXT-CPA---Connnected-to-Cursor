@@ -191,9 +191,6 @@ function createBlogCard(blog) {
         </div>
         <h3 class="blog-card-title">${blog.title}</h3>
         <p class="blog-card-excerpt">${blog.excerpt}</p>
-        <div class="blog-card-meta">
-            <span>${formatBlogDate(blog.date)}</span>
-        </div>
     `;
 
     // Make card clickable if link is provided
